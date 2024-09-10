@@ -49,15 +49,21 @@ namespace Baxter.ClusterScriptExtensions.Editor.ScriptUpdater
             Debug.Log("Updating Scriptable Item Extensions...");
 
             var extensionsInScene = GetAllComponentsInScene<ScriptableItemExtension>(scene);
+            
+            //NOTE:
+            //  下記コンポーネントのオブジェクト参照が実際にprefabかどうかの確証がない(間違って設定しているケースもありうる)ので、
+            //  Where句で明示的に調べている
             var extensionsByWorldItemTemplateList = GetAllComponentsInScene<WorldItemTemplateList>(scene)
                 .SelectMany(list => list.ItemTemplates())
                 .SelectMany(template => template.Item.gameObject
                     .GetComponentsInChildren<ScriptableItemExtension>(true)
-                );
+                )
+                .Where(ext => EditorUtility.IsPersistent(ext.gameObject));
             var extensionsByCreateItemGimmick = GetAllComponentsInScene<CreateItemGimmick>(scene)
                 .SelectMany(gimmick => gimmick.ItemTemplate.gameObject
                     .GetComponentsInChildren<ScriptableItemExtension>(true)
-                );
+                )
+                .Where(ext => EditorUtility.IsPersistent(ext.gameObject));
 
             var updatedSceneObjectCount = 0;
             var updatedPrefabCount = 0;
