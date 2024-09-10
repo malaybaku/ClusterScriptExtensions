@@ -46,6 +46,8 @@ namespace Baxter.ClusterScriptExtensions.Editor.ScriptUpdater
         /// <param name="scene"></param>
         private static void UpdateClusterScripts(Scene scene)
         {
+            Debug.Log("Updating Scriptable Item Extensions...");
+
             var extensionsInScene = GetAllComponentsInScene<ScriptableItemExtension>(scene);
             var extensionsByWorldItemTemplateList = GetAllComponentsInScene<WorldItemTemplateList>(scene)
                 .SelectMany(list => list.ItemTemplates())
@@ -57,25 +59,44 @@ namespace Baxter.ClusterScriptExtensions.Editor.ScriptUpdater
                     .GetComponentsInChildren<ScriptableItemExtension>(true)
                 );
 
+            var updatedSceneObjectCount = 0;
+            var updatedPrefabCount = 0;
+
             // prefabの更新
             foreach (var ext in
                 extensionsByCreateItemGimmick.Concat(extensionsByWorldItemTemplateList))
             {
-                //NOTE: ext自体がprefabに属しているはずだが、念のためやっている
-                var prefabExt = PrefabUtility.GetCorrespondingObjectFromSource(ext);
+                updatedPrefabCount++;
+
+                //NOTE: ext自体がprefabに属している前提の処理なことに注意
+                var prefabExt = ext;
+                //extがprefabそのものから抽出してない値な場合は下記も併用する必要があるが、今のところ不要
+                //prefabExt = PrefabUtility.GetCorrespondingObjectFromSource(ext);
+
                 FieldReloadUtil.ReloadFields(prefabExt, false);
                 ScriptCodeGenerator.ApplyGeneratedSourceCode(prefabExt);
                 var obj = prefabExt.gameObject;
-                PrefabUtility.SaveAsPrefabAsset(obj, AssetDatabase.GetAssetPath(obj));
+                EditorUtility.SetDirty(obj);
+                //PrefabUtility.SaveAsPrefabAsset(obj, AssetDatabase.GetAssetPath(obj));
             }
             
             // シーン本体を更新
             foreach (var ext in extensionsInScene)
             {
+                updatedSceneObjectCount++;
                 FieldReloadUtil.ReloadFields(ext, false);
                 ScriptCodeGenerator.ApplyGeneratedSourceCode(ext);
                 PrefabUtility.RecordPrefabInstancePropertyModifications(ext);
+                //NOTE: ext自体だけでなくScriptable Itemも改変しているので、obj全体がDirtyであるとする
+                EditorUtility.SetDirty(ext.gameObject);
             }
+            
+            AssetDatabase.SaveAssets();
+
+            Debug.Log(
+                "Scriptable Item Extension Updated: " +
+                $"{updatedSceneObjectCount} scene objects, and {updatedPrefabCount} prefab objects"
+                );
         }
 
         private static IEnumerable<T> GetAllComponentsInScene<T>(Scene scene)
