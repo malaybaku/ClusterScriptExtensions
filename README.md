@@ -103,8 +103,6 @@ const myQuaternion = new Quaternion();
 もし必要な場合、生成された `Scriptable Item` のテキストをコピーしてテキストエディタにペーストするなどの方法によって、CS Extensionsが期待通りに動作しているかどうかを確認できます。
 
 
-
-
 ## License
 
 レポジトリ上でソースコードとして含まれるコードのライセンスは[LICENSE](./LICENSE)に基づきます。
