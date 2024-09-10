@@ -63,7 +63,7 @@ namespace Baxter.ClusterScriptExtensions.Editor.Inspector
         private static void Apply(SerializedObject obj)
         {
             var ext = (ScriptableItemExtension)obj.targetObject;
-            ScriptCodeGenerator.ApplyGeneratedSourceCode(ext);
+            ItemScriptUpdater.ApplyGeneratedSourceCode(ext);
             // 何も呼ばないとScriptableItem側の表示が変わらなくて納得感がないため、再描画をリクエストする
             UnityEditorInternal.InternalEditorUtility.RepaintAllViews();
         }

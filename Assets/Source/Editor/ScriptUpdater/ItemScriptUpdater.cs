@@ -4,7 +4,10 @@ using UnityEditor;
 
 namespace Baxter.ClusterScriptExtensions.Editor.ScriptUpdater
 {
-    public static class ScriptCodeGenerator
+    /// <summary>
+    /// 単一の<see cref="ScriptableItemExtension"/>に対してコードの更新を行うクラス
+    /// </summary>
+    public static class ItemScriptUpdater
     {
         /// <summary>
         /// ScriptableItemExtensionの内容に基づいてソースコードを生成し、

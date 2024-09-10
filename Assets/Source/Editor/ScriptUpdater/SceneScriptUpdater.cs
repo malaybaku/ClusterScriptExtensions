@@ -74,7 +74,7 @@ namespace Baxter.ClusterScriptExtensions.Editor.ScriptUpdater
                 //prefabExt = PrefabUtility.GetCorrespondingObjectFromSource(ext);
 
                 FieldReloadUtil.ReloadFields(prefabExt, false);
-                ScriptCodeGenerator.ApplyGeneratedSourceCode(prefabExt);
+                ItemScriptUpdater.ApplyGeneratedSourceCode(prefabExt);
                 var obj = prefabExt.gameObject;
                 EditorUtility.SetDirty(obj);
                 //PrefabUtility.SaveAsPrefabAsset(obj, AssetDatabase.GetAssetPath(obj));
@@ -85,7 +85,7 @@ namespace Baxter.ClusterScriptExtensions.Editor.ScriptUpdater
             {
                 updatedSceneObjectCount++;
                 FieldReloadUtil.ReloadFields(ext, false);
-                ScriptCodeGenerator.ApplyGeneratedSourceCode(ext);
+                ItemScriptUpdater.ApplyGeneratedSourceCode(ext);
                 PrefabUtility.RecordPrefabInstancePropertyModifications(ext);
                 //NOTE: ext自体だけでなくScriptable Itemも改変しているので、obj全体がDirtyであるとする
                 EditorUtility.SetDirty(ext.gameObject);
