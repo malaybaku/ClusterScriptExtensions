@@ -13,7 +13,12 @@ namespace Baxter.ClusterScriptExtensions
         [SerializeField] private JavaScriptAsset templateCode;
         [SerializeField] private ScriptExtensionField[] extensionFields;
 
-        public JavaScriptAsset TemplateCode => templateCode;
+        public JavaScriptAsset TemplateCode
+        {
+            get => templateCode;
+            set => templateCode = value;
+        } 
+
         public ScriptExtensionField[] ExtensionFields => extensionFields;
 
         public void SetFields(ScriptExtensionField[] fields) => extensionFields = fields;
