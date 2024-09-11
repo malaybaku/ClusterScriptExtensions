@@ -1,0 +1,3 @@
+$.onStart(() => {
+  $.log("Example Script");
+});

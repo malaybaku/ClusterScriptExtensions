@@ -773,7 +773,7 @@ MonoBehaviour:
     floatInitialValue: 0
     stringInitialValue: 
     vector2InitialValue: {x: 0, y: 0}
-    vector3InitialValue: {x: 0, y: 0, z: 0}
+    vector3InitialValue: {x: 3, y: 4, z: 5}
     quaternionInitialValue: {x: 0, y: 0, z: 0, w: 1}
     overrideValue: 0
     boolValue: 0
@@ -821,7 +821,7 @@ MonoBehaviour:
   sourceCode: "// @field(bool)\r\nconst myBool = true;;\r\n// @field(int)\r\nconst
     myInt = 23;;\r\n// @field(float)\r\nconst myFloat = 4.5;;\r\n// @field(string)\r\nconst
     myString = \"Test\";;\r\n// @field(Vector2)\r\nconst myVector2 = new Vector2(3,
-    4);;\r\n// @field(Vector3)\r\nconst myVector3 = new Vector3(0, 0, 0);;\r\n//
+    4);;\r\n// @field(Vector3)\r\nconst myVector3 = new Vector3(3, 4, 5);;\r\n//
     @field(Quaternion)\r\nconst myQuaternion = new Quaternion(0.1276794, 0.1448781,
     0.2392984, 0.9515485);;\r\n\r\n$.onInteract(() => { \r\n  $.log(`myBool = ${myBool}`);\r\n 
     $.log(`myInt = ${myInt}`);\r\n  $.log(`myFloat = ${myFloat}`);\r\n  $.log(`myString
