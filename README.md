@@ -155,4 +155,4 @@ const myQuaternion = new Quaternion();
 
 本プロジェクトに含まれる `Esprima.dll` は [esprima-dotnet](https://github.com/sebastienros/esprima-dotnet) の配布バイナリであり、構文解析に使用しています。
 
-ライセンスは [LICENSE.txt](./Assets/Source/Editor/DLLs/LICENSE.txt) を参照して下さい。
+ライセンスは [LICENSE.txt](./Assets/Baxter/ClusterScriptExtensions/Editor/DLLs/LICENSE.txt) を参照して下さい。
