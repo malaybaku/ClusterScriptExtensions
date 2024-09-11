@@ -1,37 +1,71 @@
 # ClusterScript Extensions
 
-ClusterScript Extensions (CS Extensions) は [Cluster Script](https://docs.cluster.mu/script/) の機能を拡張するプロジェクトです。
+ClusterScript Extensions (CS Extensions) は [Cluster Script](https://docs.cluster.mu/script/) の編集/カスタム機能を拡張するプロジェクトです。
 
 MonoBehaviour で記述したスクリプトに近い編集体験を提供することを目指しています。
 
+## Features
+
+- MonoBehaviourの `[SerializeField]` のように、インスペクターでカスタム可能なフィールドを Cluster Script に設定できます。
+- 現時点では簡単なデータ型 (`bool`や`string`など) にしか対応していませんが、拡張を計画しています。
+
+
+## CS Extensions の利用が適する場面
+
+CS Extensions は以下のケースでの利用に適しています。
+
+- 同一のスクリプトを、一部の数値やテキストだけ書き換えながら再利用したい
+- 一部の値をカスタムして使う想定のスクリプトを配布したいが、その際にスクリプトは書き換えずに済むようにしたい (※この場合、配布先のユーザーもCS Extensionを導入する必要があります)
+- 
+
+いっぽう、以下のケースでは CS Extensions の利用は必ずしも適していません。下記に当てはまる場合、通常の `Scriptable Item` や `Player Script` を併用します。
+
+- 再利用やカスタムを前提としておらず、1箇所でのみ使うような Cluster Script を作成している
+- `Player Script` を使っている (※対応予定はありますが未対応です)
+
+
+## Prerequisites
+
+CS Extensions と連動するスクリプトを作成するには [Cluster Script](https://docs.cluster.mu/script/) の知識が必要になります。
+
+
 ## Install
 
-ご使用のプロジェクトに [Cluster Creator Kit](https://docs.cluster.mu/creatorkit/) のv2.20.0またはそれ以降が導入されていることを確認します。
+使用中のプロジェクトに [Cluster Creator Kit](https://docs.cluster.mu/creatorkit/) の v2.20.0 またはそれ以降が導入されていることを確認します。
 
-その後、 [Releases](https://github.com/malaybaku/ClusterScriptExtensions/releases) に含まれている `.unitypackage` ファイルをダウンロードし、プロジェクトに導入します。
+その後、 [Releases](https://github.com/malaybaku/ClusterScriptExtensions/releases) に含まれる `.unitypackage` ファイルをダウンロードし、プロジェクトに導入します。
+
+
+※UPMによる配布も計画していますが、コードの安定性やDLLの同梱方式を検討中のため未対応です。
 
 
 ## Usage
 
-### `Scriptable Item Extension` の使用
+### `Scriptable Item Extension` コンポーネントのセットアップ
 
-CS Extensionsの機能を使うには、`Scriptable Item`の代わりに`Scriptable Item Extension` コンポーネントをアタッチします。
+CS Extensions の機能を使うには、 `Item` を含むオブジェクトに `Scriptable Item Extension` コンポーネントをアタッチします。
 
-`Scriptable Item Extension` をアタッチしたオブジェクトでは `Scriptable Item` の内容が自動で更新するため、 `Scriptable Item` は直接編集しないようにします。 `Source Code Asset` も空のままにしておきます。
+`Scriptable Item Extension` コンポーネントをアタッチすると、 `Scriptable Item` も同時にアタッチされ、`Scriptable Item` の内容は自動で更新されるようになります。
+そのため、 `Scriptable Item` は直接編集しないようにします。 `Source Code Asset` も未指定のままにしておきます。
 
-(TODO: 初期設定がわかるスクリーンショット)
+`Scriptable Item Extension` をアタッチしたのち、 `Template Code` にスクリプトを指定することで基本的なセットアップが完了します。
 
-同一のプロジェクトやワールド上で、 `Scriptable Item Extension` を導入したゲームオブジェクトと、導入していないゲームオブジェクトが混在していても問題ありません。
+![スクリプトのアタッチ場所](./Readme_Screenshots/Attach_Component.png)
 
-`Scriptable Item Extension` をアタッチしたのち、 `Template Code` にスクリプトを指定します。
+なお、同一のワールド上で `Scriptable Item Extension` を使用するゲームオブジェクトと、`Scriptable Item` のみを使用するゲームオブジェクトが混在しても問題ありません。
 
-以上の一連の操作を行う代わりに、 GameObject のインスペクターに直接 `.js` 拡張子のあるファイルをドラッグ & ドロップすることでも `Scriptable Item Extension` コンポーネントを追加できます。
+### 簡略化したセットアップ手順
 
-(TODO: ドラッグドロップのbefore/afterがわかるスクリーンショット)
+前述した一連のセットアップ操作を行う代わりに、プロジェクトビューから GameObject のインスペクターに直接 `.js` 拡張子を持つファイルをドラッグ & ドロップする方法でも、 `Scriptable Item Extension` コンポーネントをセットアップできます。
+
+![ドラッグドロップによる初期化](./Readme_Screenshots/Initialize_By_DragDrop.png)
+
 
 ### スクリプトの適用とフィールド編集
 
-`Template Code` に指定したスクリプト内で `// @field` から始まるコメントを記述すると、その次の行に定義した変数は Unity Editor のインスペクターから編集できるようになります。編集可能なフィールドは `const` として定義しておきます。
+`Template Code` に指定したスクリプト内で `// @field` から始まる特殊なコメントを記述することで、その次の行に定義した変数を Unity Editor のインスペクターから編集できます。
+
+編集可能にしたいフィールドは `const` として定義しておきます。
 
 ```javascript
 // @field(string)
@@ -44,12 +78,11 @@ $.onStart(() => {
 
 上記のスクリプトを `Template Code` に指定すると、インスペクター上では以下のように表示されます。
 
-(TODO: 初期設定がわかるスクリーンショット)
+![編集可能なstringを表示する例](./Readme_Screenshots/Editable_String_Field_Sample.png)
 
-プロパティの `override` にチェックを入れて編集することで、実際に値を上書きできます。
-編集結果は直ちに `Scriptable Item` に適用されます。
+プロパティの `override` にチェックを入れて編集することで、実際に値を上書きし、編集結果が `Scriptable Item` に適用されます。
 
-現時点では下記のような書き方で、7種類のデータ型をサポートしています。
+現時点では下記のような記法で、7種類のデータ型をサポートしています。
 
 ```
 // @field(bool)
@@ -59,7 +92,7 @@ const myBool = false;
 const myInt = 1;
 
 // @field(float)
-const myFloat = 2;
+const myFloat = 1.23;
 
 // @field(string)
 const myString = "Test";
@@ -74,33 +107,38 @@ const myVector3 = new Vector3(3, 4, 5);
 const myQuaternion = new Quaternion();
 ```
 
-`Quaternion` 以外では、初期値を直接的な数値として記載してあればインスペクター上でも初期値として反映されます。
-`1 + 2` など、数値そのものではない表記を行うと、初期値は0や空文字などのデフォルト値として扱われます。
+`Quaternion` 以外では、初期値を直接的な値として記載してあればインスペクター上でも初期値として反映されます。
+`1 + 2` など、数値そのものではない表記を行った場合、初期値は0や空文字などのデフォルト値であるものとして扱われます。
 
-また、上記の `// @field` から始まるコメントは関数内に記述すると動作しません。例えば、 `$.onStart()` の内側で上記のコメントを記述しても無視されます。
+また、上記の `// @field` から始まるコメントは関数内に記述すると動作しません。
+例えば、 `$.onStart()` の内側で上記のコメントを記述しても無視されます。
 
 
-### Template Codeに差分が発生したときの操作
+### Template Codeのスクリプトを改変したときの操作
 
 `Template Code` に指定したスクリプトを書き換えたがフィールド値の再編集は行わない場合、ワールドのアップロード前にスクリプトの差分を適用する必要があります。
 
-メニューバーで `CS Extensions` > `Apply Template Codes used in Scene` を選択すると、現在開いているシーン上から参照されている `Scriptable Item Extension` を一括でチェックし、必要に応じてスクリプトの内容が更新されます。
+メニューバーで `CS Extensions` > `Apply Template Codes used in Scene` を選択すると、現在開いているシーン上で使用している `Scriptable Item Extension` を一括でチェックし、必要に応じてスクリプトの内容が適用されます。
 
-(TODO: メニューバーのスクリーンショット)
+![メニューバーからのスクリプト更新の適用](./Readme_Screenshots/Apply_Script_From_MenuBar.png)
 
-この更新操作は、 [Create Item Gimmick](https://docs.cluster.mu/creatorkit/gimmick-components/create-item-gimmick/) や [World Item Template List](https://docs.cluster.mu/creatorkit/item-components/world-item-template-list/) で指定された Prefab も対象として動作します。
+この更新操作では下記のオブジェクトが更新対象となります。
+
+- シーン上のオブジェクト
+- シーン上に存在する [Create Item Gimmick](https://docs.cluster.mu/creatorkit/gimmick-components/create-item-gimmick/) コンポーネントで参照しているprefab
+- シーン上に存在する [World Item Template List](https://docs.cluster.mu/creatorkit/item-components/world-item-template-list/) で参照しているprefab
 
 
 ## 内部挙動とデバッグについて
 
-`Scriptable Item Extension` を起点とするエディタ拡張では下記の処理を行います。
+`Scriptable Item Extension` は内部的には下記の処理を行っており、エディタ上で動作が完結します。
 
 - `Template Code` のスクリプトを構文解析し、書き換え可能なフィールドを検出します。
-- `Template Code` の構文解析の結果、およびインスペクターで指定されたフィールド値を組み合わせることでスクリプトの文字列を新たに生成し、 `Scriptable Item` に適用します。
+- `Template Code` の構文解析の結果とインスペクターで指定した値をを組み合わせることでスクリプト文字列を新しく生成し、 `Scriptable Item` のスクリプトとして適用します。
 
-適用結果は通常の `Scriptable Item` のスクリプトと同等に扱われます。
+アプリケーションの実行時には `Scriptable Item Extension` コンポーネントは何も行いません。
 
-もし必要な場合、生成された `Scriptable Item` のテキストをコピーしてテキストエディタにペーストするなどの方法によって、CS Extensionsが期待通りに動作しているかどうかを確認できます。
+必要な場合、`Scriptable Item` に適用されたテキスト全体をコピーしてテキストエディタにペーストするなどの方法により、CS Extensionsが期待通りに動作しているかどうかを確認できます。
 
 
 ## License
@@ -109,4 +147,5 @@ const myQuaternion = new Quaternion();
 
 ## Third Party
 
-本レポジトリに含まれる `Esprima.dll` は [esprima-dotnet](https://github.com/sebastienros/esprima-dotnet) の配布バイナリです。ライセンスは [LICENSE.txt](./Assets/Source/Editor/DLLs/LICENSE.txt) を参照して下さい。
+本レポジトリに含まれる `Esprima.dll` は [esprima-dotnet](https://github.com/sebastienros/esprima-dotnet) の配布バイナリです。
+ライセンスは [LICENSE.txt](./Assets/Source/Editor/DLLs/LICENSE.txt) を参照して下さい。
