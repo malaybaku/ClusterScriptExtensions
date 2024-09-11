@@ -76,7 +76,7 @@ CS Extensions の機能を使うには、 `Item` を含むオブジェクトに 
 const displayName = "example";
 
 $.onStart(() => {
-  $.log(`Hello, ${myValue}!`);
+  $.log(`Hello, ${displayName}!`);
 });
 ```
 
