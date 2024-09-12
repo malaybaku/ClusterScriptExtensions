@@ -12,10 +12,18 @@ namespace Baxter.ClusterScriptExtensions
     public class ScriptExtensionField
     {
         // ユーザーは直接編集しない、テンプレートとなるコードから定まる値
+        
+        // 一番基本になるフィールド名、型、定義文の位置
         [SerializeField] private string fieldName;
         [SerializeField] private ExtensionFieldType type;
         [SerializeField] private FieldDefinedLocation fieldDefinedLocation;
-
+        
+        // コメントによって追加で定義されうるフィールド値のメタ情報で、値そのものには影響しないやつ
+        [SerializeField] private bool hasRange;
+        [SerializeField] private float rangeMin;
+        [SerializeField] private float rangeMax;
+        [SerializeField] private bool useTextArea;
+        
         // ここもユーザーは直接編集しないテンプレート上の値で、リテラルで書かれた初期値があればそれを保持する
         [SerializeField] private bool boolInitialValue;
         [SerializeField] private int intInitialValue;
@@ -37,6 +45,34 @@ namespace Baxter.ClusterScriptExtensions
         [SerializeField] private Vector2 vector2Value;
         [SerializeField] private Vector3 vector3Value;
         [SerializeField] private Quaternion quaternionValue;
+ 
+        #region Meta Properties
+
+        public bool HasRange
+        {
+            get => hasRange;
+            set => hasRange = value;
+        }
+
+        public float RangeMin
+        {
+            get => rangeMin;
+            set => rangeMin = value;
+        }
+        
+        public float RangeMax
+        {
+            get => rangeMax;
+            set => rangeMax = value;
+        }
+
+        public bool UseTextArea
+        {
+            get => useTextArea;
+            set => useTextArea = value;
+        }
+        
+        #endregion
         
         #region Properties
 
