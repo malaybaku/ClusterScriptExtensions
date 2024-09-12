@@ -8,16 +8,55 @@ namespace Baxter.ClusterScriptExtensions.Editor.ScriptParser
 {
     public static class ExtensionFieldParser
     {
+        private static readonly Regex FieldMetaCommentRegex = new(@"^\s*@field\(([^\)]+)\)");
+        
+        // FieldMetaCommentの検出後に追加で調べに行くattrっぽいやつ
+        private static readonly Regex RangeRegex = new(@"@range\(([^\)]+)\)");
+        private const string TextAreaAttrLiteral = "@textArea";
+
         private readonly struct FieldDefineComment
         {
             public readonly Location Location;
             public readonly ExtensionFieldType Type;
 
-            public FieldDefineComment(Location location, ExtensionFieldType type)
+            public readonly bool HasRange;
+            public readonly float RangeMin;
+            public readonly float RangeMax;
+
+            public readonly bool UseTextArea;
+
+            FieldDefineComment(Location location, ExtensionFieldType type,
+                bool hasRange, float rangeMin, float rangeMax,
+                bool useTextArea
+                )
             {
                 Location = location;
                 Type = type;
+
+                HasRange = hasRange;
+                RangeMin = rangeMin;
+                RangeMax = rangeMax;
+
+                UseTextArea = useTextArea;
             }
+
+            public static FieldDefineComment Create(Location location, ExtensionFieldType type) => new(
+                location, type,
+                false, 0f, 0f,
+                false
+            );
+
+            public FieldDefineComment WithRange(float min, float max) => new(
+                Location, Type,
+                true, min, max,
+                UseTextArea
+            );
+
+            public FieldDefineComment WithUseTextArea() => new(
+                Location, Type,
+                HasRange, RangeMin, RangeMax,
+                true
+            );
         }
 
         private static readonly Dictionary<string, ExtensionFieldType> TypeNames = new()
@@ -30,8 +69,6 @@ namespace Baxter.ClusterScriptExtensions.Editor.ScriptParser
             ["vector3"] = ExtensionFieldType.Vector3,
             ["quaternion"] = ExtensionFieldType.Quaternion,
         };
-
-        private static readonly Regex FieldMetaCommentRegex = new(@"^\s*@field\(([^\)]+)\)");
 
         // 対象フィールドの検出条件
         // - Scriptのトップレベルで、コメント > 変数定義がこの順で並んでいる
@@ -101,6 +138,10 @@ namespace Baxter.ClusterScriptExtensions.Editor.ScriptParser
                         endLine = decl.Location.End.Line,
                         endColumn = decl.Location.End.Column,
                     },
+                    HasRange = c.HasRange,
+                    RangeMin = c.RangeMin,
+                    RangeMax = c.RangeMax,
+                    UseTextArea = c.UseTextArea,
                 };
 
                 if (decl.Init is { } initExpr)
@@ -125,10 +166,15 @@ namespace Baxter.ClusterScriptExtensions.Editor.ScriptParser
                 }
 
                 var typeName = metaMatch.Groups[1].Captures[0].Value.ToLower();
-                if (TypeNames.TryGetValue(typeName, out var type))
+                if (!TypeNames.TryGetValue(typeName, out var type))
                 {
-                    result.Add(new FieldDefineComment(comment.Location, type));
+                    continue;
                 }
+
+                var definition = FieldDefineComment.Create(comment.Location, type);
+                definition = ApplyAdditionalAttributes(definition, comment);
+
+                result.Add(definition);
             }
 
             return result;
@@ -186,6 +232,32 @@ namespace Baxter.ClusterScriptExtensions.Editor.ScriptParser
             }
         }
 
+        // @field以外で追加で定義した値があるか確認してパースする。
+        // 現時点ではRegexで収まるくらいの処理しかしていないが、必要ならコメントの内容自体をEsprimaで読みだすことを検討してもOK
+        private static FieldDefineComment ApplyAdditionalAttributes(FieldDefineComment source, SyntaxComment comment)
+        {
+            var result = source;
+
+            if (RangeRegex.Match(comment.Value) is { Success: true } rangeMatch)
+            {
+                var rangeContents = rangeMatch.Groups[1].Captures[0].Value.Split(',');
+                if (rangeContents.Length == 2 &&
+                    float.TryParse(rangeContents[0], out var min) &&
+                    float.TryParse(rangeContents[1], out var max) && 
+                    min < max)
+                {
+                    result = result.WithRange(min, max);
+                }
+            }
+                
+            if (comment.Value.Contains(TextAreaAttrLiteral))
+            {
+                result = result.WithUseTextArea();
+            }
+
+            return result;
+        }
+        
         // 2つのLocationに範囲の重複があるかどうかを判定する
         private static bool HasOverlap(Location x, Location y)
         {

@@ -569,6 +569,10 @@ MonoBehaviour:
       startColumn: 6
       endLine: 2
       endColumn: 27
+    hasRange: 0
+    rangeMin: 0
+    rangeMax: 0
+    useTextArea: 0
     boolInitialValue: 0
     intInitialValue: 0
     floatInitialValue: 0
@@ -615,6 +619,62 @@ MonoBehaviour:
     value: 12967882894876145313
   itemName: Sample00_Hello
   size: {x: 0, y: 0, z: 0}
+--- !u!1 &942585007
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 942585008}
+  - component: {fileID: 942585009}
+  m_Layer: 0
+  m_Name: Ref_InspectorLook
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &942585008
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 942585007}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 7
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &942585009
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 942585007}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f757d7bf6faaca14e924e47124351601, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  myBool: 0
+  myInt: 0
+  myFloat: 0
+  myText: 
+  myVector2: {x: 0, y: 0}
+  myVector3: {x: 0, y: 0, z: 0}
+  myRotation: {x: 0, y: 0, z: 0, w: 0}
+  myLongText: "\u3042\n\u3044\n\u3046\n\u3048"
+  myRangeInt: 0
+  myRangeFloat: 1
+  myEnumValue: 0
+  myFlagEnumValue: 0
 --- !u!1 &1043978762
 GameObject:
   m_ObjectHideFlags: 0
@@ -658,6 +718,10 @@ MonoBehaviour:
       startColumn: 6
       endLine: 2
       endColumn: 20
+    hasRange: 0
+    rangeMin: 0
+    rangeMax: 0
+    useTextArea: 0
     boolInitialValue: 0
     intInitialValue: 0
     floatInitialValue: 0
@@ -680,6 +744,10 @@ MonoBehaviour:
       startColumn: 6
       endLine: 4
       endColumn: 16
+    hasRange: 0
+    rangeMin: 0
+    rangeMax: 0
+    useTextArea: 0
     boolInitialValue: 0
     intInitialValue: 10
     floatInitialValue: 0
@@ -702,6 +770,10 @@ MonoBehaviour:
       startColumn: 6
       endLine: 6
       endColumn: 19
+    hasRange: 0
+    rangeMin: 0
+    rangeMax: 0
+    useTextArea: 0
     boolInitialValue: 0
     intInitialValue: 0
     floatInitialValue: 2.3
@@ -724,6 +796,10 @@ MonoBehaviour:
       startColumn: 6
       endLine: 8
       endColumn: 23
+    hasRange: 0
+    rangeMin: 0
+    rangeMax: 0
+    useTextArea: 0
     boolInitialValue: 0
     intInitialValue: 0
     floatInitialValue: 0
@@ -746,6 +822,10 @@ MonoBehaviour:
       startColumn: 6
       endLine: 10
       endColumn: 35
+    hasRange: 0
+    rangeMin: 0
+    rangeMax: 0
+    useTextArea: 0
     boolInitialValue: 0
     intInitialValue: 0
     floatInitialValue: 0
@@ -768,6 +848,10 @@ MonoBehaviour:
       startColumn: 6
       endLine: 12
       endColumn: 38
+    hasRange: 0
+    rangeMin: 0
+    rangeMax: 0
+    useTextArea: 0
     boolInitialValue: 0
     intInitialValue: 0
     floatInitialValue: 0
@@ -790,6 +874,10 @@ MonoBehaviour:
       startColumn: 6
       endLine: 14
       endColumn: 37
+    hasRange: 0
+    rangeMin: 0
+    rangeMax: 0
+    useTextArea: 0
     boolInitialValue: 0
     intInitialValue: 0
     floatInitialValue: 0
@@ -1338,6 +1426,260 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7d4a729ae3f80437b826f95e71f9c942, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &2123536157
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2123536161}
+  - component: {fileID: 2123536160}
+  - component: {fileID: 2123536159}
+  - component: {fileID: 2123536158}
+  - component: {fileID: 2123536164}
+  - component: {fileID: 2123536163}
+  - component: {fileID: 2123536162}
+  m_Layer: 0
+  m_Name: Cube
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!65 &2123536158
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2123536157}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!23 &2123536159
+MeshRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2123536157}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 10303, guid: 0000000000000000f000000000000000, type: 0}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_AdditionalVertexStreams: {fileID: 0}
+--- !u!33 &2123536160
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2123536157}
+  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!4 &2123536161
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2123536157}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 8, y: 0.5, z: 4}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 8
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2123536162
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2123536157}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b823bd601c25d6643a680126a20d89c9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  templateCode: {fileID: 5022602860645237092, guid: d7c74a6bedce1e64e9d46edf991c53ad, type: 3}
+  extensionFields:
+  - fieldName: myLongText
+    type: 3
+    fieldDefinedLocation:
+      startLine: 2
+      startColumn: 6
+      endLine: 2
+      endColumn: 21
+    hasRange: 0
+    rangeMin: 0
+    rangeMax: 0
+    useTextArea: 1
+    boolInitialValue: 0
+    intInitialValue: 0
+    floatInitialValue: 0
+    stringInitialValue: 
+    vector2InitialValue: {x: 0, y: 0}
+    vector3InitialValue: {x: 0, y: 0, z: 0}
+    quaternionInitialValue: {x: 0, y: 0, z: 0, w: 1}
+    overrideValue: 0
+    boolValue: 0
+    intValue: 0
+    floatValue: 0
+    stringValue: 
+    vector2Value: {x: 0, y: 0}
+    vector3Value: {x: 0, y: 0, z: 0}
+    quaternionValue: {x: 0, y: 0, z: 0, w: 1}
+  - fieldName: myRangeInt
+    type: 1
+    fieldDefinedLocation:
+      startLine: 5
+      startColumn: 6
+      endLine: 5
+      endColumn: 21
+    hasRange: 1
+    rangeMin: -10
+    rangeMax: 20
+    useTextArea: 0
+    boolInitialValue: 0
+    intInitialValue: 0
+    floatInitialValue: 0
+    stringInitialValue: 
+    vector2InitialValue: {x: 0, y: 0}
+    vector3InitialValue: {x: 0, y: 0, z: 0}
+    quaternionInitialValue: {x: 0, y: 0, z: 0, w: 1}
+    overrideValue: 0
+    boolValue: 0
+    intValue: 0
+    floatValue: 0
+    stringValue: 
+    vector2Value: {x: 0, y: 0}
+    vector3Value: {x: 0, y: 0, z: 0}
+    quaternionValue: {x: 0, y: 0, z: 0, w: 1}
+  - fieldName: myRangeFloat
+    type: 2
+    fieldDefinedLocation:
+      startLine: 8
+      startColumn: 6
+      endLine: 8
+      endColumn: 24
+    hasRange: 1
+    rangeMin: 0.1
+    rangeMax: 5
+    useTextArea: 0
+    boolInitialValue: 0
+    intInitialValue: 0
+    floatInitialValue: 1
+    stringInitialValue: 
+    vector2InitialValue: {x: 0, y: 0}
+    vector3InitialValue: {x: 0, y: 0, z: 0}
+    quaternionInitialValue: {x: 0, y: 0, z: 0, w: 1}
+    overrideValue: 0
+    boolValue: 0
+    intValue: 0
+    floatValue: 1
+    stringValue: 
+    vector2Value: {x: 0, y: 0}
+    vector3Value: {x: 0, y: 0, z: 0}
+    quaternionValue: {x: 0, y: 0, z: 0, w: 1}
+  - fieldName: myEnum
+    type: 1
+    fieldDefinedLocation:
+      startLine: 12
+      startColumn: 6
+      endLine: 12
+      endColumn: 16
+    hasRange: 0
+    rangeMin: 0
+    rangeMax: 0
+    useTextArea: 0
+    boolInitialValue: 0
+    intInitialValue: 0
+    floatInitialValue: 0
+    stringInitialValue: 
+    vector2InitialValue: {x: 0, y: 0}
+    vector3InitialValue: {x: 0, y: 0, z: 0}
+    quaternionInitialValue: {x: 0, y: 0, z: 0, w: 1}
+    overrideValue: 0
+    boolValue: 0
+    intValue: 0
+    floatValue: 0
+    stringValue: 
+    vector2Value: {x: 0, y: 0}
+    vector3Value: {x: 0, y: 0, z: 0}
+    quaternionValue: {x: 0, y: 0, z: 0, w: 1}
+--- !u!114 &2123536163
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2123536157}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e61061896c654489a41575fc291bf4a0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sourceCodeAsset: {fileID: 0}
+  sourceCode: "// @field(string), @textArea\r\nconst myLongText = \"\";\r\n\r\n//
+    @field(int), @range(-10, 20)\r\nconst myRangeInt = 0;;\r\n\r\n// @field(float),
+    @range(0.1, 5.0)\r\nconst myRangeFloat = 1;;\r\n\r\n// NOTE: enum\u306F\u307E\u3060\u5BFE\u5FDC\u3067\u304D\u3066\u3044\u306A\u3044\r\n//
+    @field(int), @enum(\"OptionA\", \"2\u3064\u76EE\u306E\u30AA\u30D7\u30B7\u30E7\u30F3\",
+    \"No.3\")\r\nconst myEnum = 0;;\r\n\r\n$.onInteract(() => { \r\n  $.log(`long
+    text... ${myLongText}`);\r\n\r\n  $.log(`range int... ${myRangeInt}`);\r\n  $.log(`range
+    float... ${myRangeFloat}`);\r\n\r\n  $.log(`enum... ${myEnum}`);\r\n});\r\n"
+--- !u!114 &2123536164
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2123536157}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3977a5e65e72f4db4b85ddba10d48dd4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  id:
+    value: 0
+  itemName: 
+  size: {x: 0, y: 0, z: 0}
 --- !u!1001 &1866279324914896648
 PrefabInstance:
   m_ObjectHideFlags: 0
