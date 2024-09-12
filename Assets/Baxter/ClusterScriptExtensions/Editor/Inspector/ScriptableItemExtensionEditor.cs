@@ -36,21 +36,19 @@ namespace Baxter.ClusterScriptExtensions.Editor.Inspector
                 Apply(serializedObject);
             }
 
-            if (GUILayout.Button("Reset Values"))
+            if (GUILayout.Button("Reload Script"))
             {
-                ResetValues(serializedObject);
+                ReloadFields(serializedObject, false);
                 Apply(serializedObject);
             }
-        }
 
-        private static void ResetValues(SerializedObject obj)
-        {
-            var ext = (ScriptableItemExtension)obj.targetObject;
-            foreach (var field in ext.ExtensionFields)
+            if (GUILayout.Button("Reset Values"))
             {
-                field.ResetValues();
+                // 値を巻き戻すのではなく、Field自体をリロードしてしまう。
+                // こっちのほうがスクリプトが変わったケースに対して強いため
+                ReloadFields(serializedObject, true);
+                Apply(serializedObject);
             }
-            EditorUtility.SetDirty(ext);
         }
 
         private static void ReloadFields(SerializedObject obj, bool refreshField)
