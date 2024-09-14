@@ -10,7 +10,7 @@ namespace Baxter.ClusterScriptExtensions.Editor.ComponentUpdater
         public static void Update(ScriptableItemExtension ext)
         {
             var elements = ext.ExtensionFields
-                .Where(f => f.Type is ExtensionFieldType.HumanoidAnimation)
+                .Where(f => f.Type is ExtensionFieldType.HumanoidAnimation && f.HumanoidAnimationClipValue != null)
                 .Select(f => (Id: f.FieldName, Clip: f.HumanoidAnimationClipValue))
                 .ToArray();
 

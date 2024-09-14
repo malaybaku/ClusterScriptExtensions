@@ -15,7 +15,7 @@ namespace Baxter.ClusterScriptExtensions.Editor.ComponentUpdater
         public static void Update(ScriptableItemExtension ext)
         {
             var audioClipElements = ext.ExtensionFields
-                .Where(f => f.Type is ExtensionFieldType.AudioClip)
+                .Where(f => f.Type is ExtensionFieldType.AudioClip && f.AudioClipValue != null)
                 .Select(f => (Id: f.FieldName, Clip: f.AudioClipValue, Loop: f.BoolValue))
                 .ToArray();
 

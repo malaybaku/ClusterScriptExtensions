@@ -11,7 +11,7 @@ namespace Baxter.ClusterScriptExtensions.Editor.ComponentUpdater
         public static void Update(ScriptableItemExtension ext)
         {
             var elements = ext.ExtensionFields
-                .Where(f => f.Type is ExtensionFieldType.Material)
+                .Where(f => f.Type is ExtensionFieldType.Material && f.MaterialValue != null)
                 .Select(f => (Id: f.FieldName, Material: f.MaterialValue))
                 .ToArray();
 
