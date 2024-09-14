@@ -68,6 +68,8 @@ namespace Baxter.ClusterScriptExtensions.Editor.ScriptParser
             ["vector2"] = ExtensionFieldType.Vector2,
             ["vector3"] = ExtensionFieldType.Vector3,
             ["quaternion"] = ExtensionFieldType.Quaternion,
+            ["audioclip"] = ExtensionFieldType.AudioClip,
+            ["humanoidanimation"] = ExtensionFieldType.HumanoidAnimation,
         };
 
         // 対象フィールドの検出条件
@@ -182,6 +184,7 @@ namespace Baxter.ClusterScriptExtensions.Editor.ScriptParser
 
         private static void ApplyInitialValue(ScriptExtensionField target, Expression expr)
         {
+            //NOTE: アセット参照の型に対しては何もしないでOK (既定値は常にnullにしてよい)
             target.ResetInitialValues();
             switch (target.Type)
             {
