@@ -39,8 +39,12 @@ CS Extensions と連動するスクリプトを作成するには [Cluster Scrip
 
 その後、 [Releases](https://github.com/malaybaku/ClusterScriptExtensions/releases) に含まれる `.unitypackage` ファイルをダウンロードし、プロジェクトに導入します。
 
+Unity Package Managerを使用する場合、 `Packages/manifest.json` で `dependencies` に下記を追記する方法でも導入できます。
+末尾のバージョン値は [Releases](https://github.com/malaybaku/ClusterScriptExtensions/releases) で記載された、参照したい CS Extensions のリリースバージョンを指定します。
 
-※UPMによる配布も計画していますが、コードの安定性やDLLの同梱方式を検討中のため未対応です。
+```
+"com.baxter.cs-extensions": "https://github.com/malaybaku/ClusterScriptExtensions.git?path=Assets/Baxter/ClusterScriptExtensions#v0.1.0",
+```
 
 
 ## How to Use
