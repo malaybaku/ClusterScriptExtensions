@@ -152,6 +152,10 @@ MonoBehaviour:
       startColumn: 6
       endLine: 2
       endColumn: 23
+    hasRange: 0
+    rangeMin: 0
+    rangeMax: 0
+    useTextArea: 0
     boolInitialValue: 0
     intInitialValue: 0
     floatInitialValue: 0
@@ -159,7 +163,7 @@ MonoBehaviour:
     vector2InitialValue: {x: 0, y: 0}
     vector3InitialValue: {x: 0, y: 0, z: 0}
     quaternionInitialValue: {x: 0, y: 0, z: 0, w: 1}
-    overrideValue: 1
+    overrideValue: 0
     boolValue: 0
     intValue: 0
     floatValue: 0
@@ -167,3 +171,7 @@ MonoBehaviour:
     vector2Value: {x: 0, y: 0}
     vector3Value: {x: 0, y: 0, z: 0}
     quaternionValue: {x: 0, y: 0, z: 0, w: 1}
+    audioClipValue: {fileID: 0}
+    humanoidAnimationClipValue: {fileID: 0}
+    itemReferenceValue: {fileID: 0}
+    materialValue: {fileID: 0}
