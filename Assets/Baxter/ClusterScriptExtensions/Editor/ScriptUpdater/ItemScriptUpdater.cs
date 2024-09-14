@@ -38,6 +38,9 @@ namespace Baxter.ClusterScriptExtensions.Editor.ScriptUpdater
             
             ItemAudioSetListUpdater.Update(ext);
             HumanoidAnimationListUpdater.Update(ext);
+            WorldItemReferenceListUpdater.Update(ext);
+            WorldItemTemplateListUpdater.Update(ext);
+            ItemMaterialSetListUpdater.Update(ext);
         }
         
         // 指定された位置のコードを消して別のテキストに置き換えたスクリプト文字列を生成する。

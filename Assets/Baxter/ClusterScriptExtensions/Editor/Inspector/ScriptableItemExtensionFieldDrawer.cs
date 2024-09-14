@@ -78,6 +78,9 @@ namespace Baxter.ClusterScriptExtensions.Editor.Inspector
             var valueProperty = fieldType switch
             {
                 ExtensionFieldType.HumanoidAnimation => property.FindPropertyRelative("humanoidAnimationClipValue"),
+                ExtensionFieldType.WorldItem => property.FindPropertyRelative("itemReferenceValue"),
+                ExtensionFieldType.WorldItemTemplate => property.FindPropertyRelative("itemReferenceValue"),
+                ExtensionFieldType.Material => property.FindPropertyRelative("materialValue"),
                 _ => null,
             };
 
