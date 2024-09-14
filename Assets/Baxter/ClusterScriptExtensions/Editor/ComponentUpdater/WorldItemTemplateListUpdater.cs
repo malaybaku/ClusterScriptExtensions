@@ -10,7 +10,7 @@ namespace Baxter.ClusterScriptExtensions.Editor.ComponentUpdater
         public static void Update(ScriptableItemExtension ext)
         {
             var entries = ext.ExtensionFields
-                .Where(f => f.Type is ExtensionFieldType.AudioClip)
+                .Where(f => f.Type is ExtensionFieldType.WorldItemTemplate)
                 .Select(f => (Id: f.FieldName, Item: f.ItemReferenceValue))
                 .ToArray();
 
