@@ -16,6 +16,8 @@ namespace Baxter.ClusterScriptExtensions
 
         // もしアセット参照にかかわるField (WorldItemReferenceなど) を追加する場合、
         // オフセットをつけて分割する: プリミティブと混ざるとややこしいため
-        //AssetReferenceIndexOffset = 1000,
+        AssetReferenceIndexOffset = 1000,
+        AudioClip,
+        HumanoidAnimation,
     }
 }
