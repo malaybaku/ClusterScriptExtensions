@@ -70,6 +70,9 @@ namespace Baxter.ClusterScriptExtensions.Editor.ScriptParser
             ["quaternion"] = ExtensionFieldType.Quaternion,
             ["audioclip"] = ExtensionFieldType.AudioClip,
             ["humanoidanimation"] = ExtensionFieldType.HumanoidAnimation,
+            ["worlditem"] = ExtensionFieldType.WorldItem,
+            ["worlditemtemplate"] = ExtensionFieldType.WorldItemTemplate,
+            ["material"] = ExtensionFieldType.Material,
         };
 
         // 対象フィールドの検出条件

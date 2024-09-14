@@ -1,4 +1,5 @@
 using System;
+using ClusterVR.CreatorKit.Item.Implements;
 using Newtonsoft.Json;
 using UnityEngine;
 
@@ -48,7 +49,10 @@ namespace Baxter.ClusterScriptExtensions
         [SerializeField] private Quaternion quaternionValue;
         [SerializeField] private AudioClip audioClipValue;
         [SerializeField] private AnimationClip humanoidAnimationClipValue;
- 
+        // NOTE: fieldTypeによってシーン上アイテムを指す場合とprefabを指す場合がある
+        [SerializeField] private Item itemReferenceValue;
+        [SerializeField] private Material materialValue;
+
         #region Meta Properties
 
         public bool HasRange
@@ -145,6 +149,8 @@ namespace Baxter.ClusterScriptExtensions
         //NOTE: アセット参照系のものは初期値がnullなので、overrideと関係なく実際にアサインされた値を正とする
         public AudioClip AudioClipValue => audioClipValue;
         public AnimationClip HumanoidAnimationClipValue => humanoidAnimationClipValue;
+        public Item ItemReferenceValue => itemReferenceValue;
+        public Material MaterialValue => materialValue;
         
         private bool ActiveBoolValue => overrideValue ? boolValue : boolInitialValue;
         private int ActiveIntValue => overrideValue ? intValue : intInitialValue;
@@ -174,6 +180,9 @@ namespace Baxter.ClusterScriptExtensions
                     => $"new Quaternion({ActiveQuaternionValue.x:G}, {ActiveQuaternionValue.y:G}, {ActiveQuaternionValue.z:G}, {ActiveQuaternionValue.w:G})",
                 ExtensionFieldType.AudioClip => $"$.audio(\"{fieldName}\")",
                 ExtensionFieldType.HumanoidAnimation => $"$.humanoidAnimation(\"{fieldName}\")",
+                ExtensionFieldType.WorldItem => $"$.worldItemReference(\"{fieldName}\")",
+                ExtensionFieldType.WorldItemTemplate => $"new WorldItemTemplateId(\"{fieldName}\")",
+                ExtensionFieldType.Material => $"$.material(\"{fieldName}\")",
                 _ => throw new InvalidOperationException("Unsupported type!"),
             };
         }

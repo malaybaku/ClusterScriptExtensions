@@ -19,5 +19,8 @@ namespace Baxter.ClusterScriptExtensions
         AssetReferenceIndexOffset = 1000,
         AudioClip,
         HumanoidAnimation,
+        WorldItem,
+        WorldItemTemplate,
+        Material,
     }
 }
