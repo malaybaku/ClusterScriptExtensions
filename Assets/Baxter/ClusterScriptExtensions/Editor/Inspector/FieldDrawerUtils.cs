@@ -40,5 +40,8 @@ namespace Baxter.ClusterScriptExtensions.Editor.Inspector
         
         public static bool IsOverrideActive(SerializedProperty property)
             => property.FindPropertyRelative("overrideValue").boolValue;
+
+        public static void ShowWarning(string message) 
+            => EditorGUILayout.LabelField(message, (GUIStyle) "CN StatusWarn");
     }
 }

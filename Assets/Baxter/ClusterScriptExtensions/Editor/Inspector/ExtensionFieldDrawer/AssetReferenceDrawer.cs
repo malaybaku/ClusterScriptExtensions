@@ -1,3 +1,5 @@
+using System.Linq;
+using ClusterVR.CreatorKit.Item.Implements;
 using UnityEditor;
 using UnityEngine;
 
@@ -48,33 +50,93 @@ namespace Baxter.ClusterScriptExtensions.Editor.Inspector.ExtensionFieldDrawer
             var fieldName = GetFieldName(property);
             EditorGUI.PropertyField(position, valueProperty, new GUIContent(fieldName));
 
-            // AudioClipでは他と違ってループの有無も設定が必要なので、それを表示する
-            if (type is ExtensionFieldType.AudioClip)
+            EditorGUI.indentLevel++;
+
+            switch (type)
             {
-                EditorGUI.indentLevel++;
-                EditorGUILayout.PropertyField(
-                    property.FindPropertyRelative("boolValue"),
-                    new GUIContent(fieldName + ": loop")
-                );
-                EditorGUI.indentLevel--;
+                case ExtensionFieldType.AudioClip:
+                    ShowAdditionalContentForAudioClip(property, fieldName);
+                    break;
+                case ExtensionFieldType.HumanoidAnimation:
+                    CheckErrorForHumanoidAnimation(valueProperty);
+                    break;
+                case ExtensionFieldType.WorldItem:
+                    CheckWorldItemAssignValidity(valueProperty);
+                    break;
+                case ExtensionFieldType.WorldItemTemplate:
+                    CheckWorldItemTemplateAssignValidity(valueProperty);
+                    break;
+                case ExtensionFieldType.Material:
+                    CheckMaterialAssignValidity(valueProperty);
+                    break;
             }
-            
-            if (type is ExtensionFieldType.HumanoidAnimation)
-            {
-                CheckErrorForHumanoidAnimation(valueProperty);
-            }
+
+            EditorGUI.indentLevel--;
         }
 
+        void ShowAdditionalContentForAudioClip(SerializedProperty property, string fieldName)
+        {
+            EditorGUILayout.PropertyField(
+                property.FindPropertyRelative("boolValue"),
+                new GUIContent(fieldName + ": loop")
+            );
+        }
+        
         void CheckErrorForHumanoidAnimation(SerializedProperty valueProperty)
         {
             if (valueProperty.objectReferenceValue is AnimationClip clip && !clip.isHumanMotion)
             {
-                EditorGUI.indentLevel++;
-                EditorGUILayout.LabelField(
-                    "Error: The clip seems not Humanoid Animation!", 
-                    (GUIStyle) "CN StatusWarn"
-                );
-                EditorGUI.indentLevel--;
+                ShowWarning("Error: The clip is not for Humanoid. Please set Humanoid animation.");
+            }
+        }
+
+        void CheckWorldItemAssignValidity(SerializedProperty valueProperty)
+        {
+            var item = valueProperty.objectReferenceValue as Item;
+            if (item == null)
+            {
+                return;
+            }
+            
+            // - 永続化されたprefabそのものを指してたらNG
+            // - prefab modeの場合にprefab mode内オブジェクトを指してるのはセーフ
+            if (EditorUtility.IsPersistent(item.gameObject))
+            {
+                ShowWarning("Error: Please set item in scene.");
+            }
+        }
+
+        void CheckWorldItemTemplateAssignValidity(SerializedProperty valueProperty)
+        {
+            var item = valueProperty.objectReferenceValue as Item;
+            if (item == null)
+            {
+                return;
+            }
+            
+            // - シーン上でprefabじゃないものを指してたらNG
+            // - prefab modeの場合にprefab mode内オブジェクトを指すのもNG
+            if (!EditorUtility.IsPersistent(item.gameObject))
+            {
+                ShowWarning("Error: Please set item prefab, which is not in scene.");
+            }
+        }
+        
+        void CheckMaterialAssignValidity(SerializedProperty valueProperty)
+        {
+            var material = valueProperty.objectReferenceValue as Material;
+            if (material == null)
+            {
+                return;
+            }
+
+            // マテリアルはItemかその子要素で使っているものしか指定できない…という条件があるので、それを検証している
+            var ext = (ScriptableItemExtension)valueProperty.serializedObject.targetObject;
+            if (!ext.GetComponentsInChildren<Renderer>(true)
+                .SelectMany(renderer => renderer.sharedMaterials)
+                .Contains(material))
+            {
+                ShowWarning("Error: Please set material used by item or its children");
             }
         }
     }
