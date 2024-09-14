@@ -73,3 +73,8 @@ crashlytics-build.properties
 
 # Ignore JetBrains Rider files
 /.idea/
+
+# Ignore internal data to ignore. The folder may include test-only-purposed assets like sound, motion, etc.
+/[Aa]ssets/Internal_Ignored.meta
+/[Aa]ssets/Internal_Ignored/
+
