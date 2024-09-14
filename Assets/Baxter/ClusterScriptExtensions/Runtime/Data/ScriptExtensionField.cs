@@ -213,8 +213,11 @@ namespace Baxter.ClusterScriptExtensions
             vector2Value = source.vector2Value;
             vector3Value = source.vector3Value;
             quaternionValue = source.quaternionValue;
+
             audioClipValue = source.audioClipValue;
             humanoidAnimationClipValue = source.humanoidAnimationClipValue;
+            itemReferenceValue = source.itemReferenceValue;
+            materialValue = source.materialValue;
         }
         
         public void ResetValues()
@@ -227,8 +230,11 @@ namespace Baxter.ClusterScriptExtensions
             vector2Value = vector2InitialValue;
             vector3Value = vector3InitialValue;
             quaternionValue = quaternionInitialValue;
+
             audioClipValue = null;
             humanoidAnimationClipValue = null;
+            itemReferenceValue = null;
+            materialValue = null;
         }
     }
 }
