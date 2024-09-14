@@ -8,13 +8,24 @@ namespace Baxter.ClusterScriptExtensions.Editor.Inspector
     {
         private const float TextAreaTotalLineHeightFactor = 6f;
         private const float LineHeightFactor = 2.5f;
+        private const float AudioClipLineHeightFactor = 2.5f;
+        private const float AssetReferenceLineHeightFactor = 1.5f;
         private const float TextAreaLineHeightFactor = TextAreaTotalLineHeightFactor - LineHeightFactor;
 
         private Vector2 textAreaScrollPosition;
         
         public override float GetPropertyHeight(SerializedProperty property, GUIContent label)
         {
-            if (UseTextArea(property))
+            var fieldType = GetFieldType(property);
+            if (fieldType is ExtensionFieldType.AudioClip)
+            {
+                return LineHeight(AudioClipLineHeightFactor);
+            }
+            else if ((int)fieldType >= (int)ExtensionFieldType.AssetReferenceIndexOffset)
+            {
+                return LineHeight(AssetReferenceLineHeightFactor);
+            }
+            else if (UseTextArea(property))
             {
                 return LineHeight(LineHeightFactor);
             }
@@ -25,6 +36,74 @@ namespace Baxter.ClusterScriptExtensions.Editor.Inspector
         }
 
         public override void OnGUI(Rect position, SerializedProperty property, GUIContent label)
+        {
+            var fieldType = GetFieldType(property);
+            if (fieldType is ExtensionFieldType.AudioClip)
+            {
+                OnGUIWithAudioClipProperty(position, property);
+            }
+            else if ((int)fieldType >= (int)ExtensionFieldType.AssetReferenceIndexOffset)
+            {
+                OnGUIWithAssetReferenceProperty(position, property);
+            }
+            else
+            {
+                OnGUIWithOverridableProperty(position, property);
+            }
+        }
+
+        // NOTE: AudioClipは通常のAssetReferenceと違い、loopフラグを提示する
+        private void OnGUIWithAudioClipProperty(Rect position, SerializedProperty property)
+        {
+            var fieldName = property.FindPropertyRelative("fieldName").stringValue;
+            var label = new GUIContent(fieldName);
+            var loopLabel = new GUIContent(fieldName + ": loop");
+            
+            var valueProperty = property.FindPropertyRelative("audioClipValue");
+            var loopProperty = property.FindPropertyRelative("boolValue");
+
+            position.height = LineHeight(1f);
+            EditorGUI.PropertyField(position, valueProperty, label);
+
+            position.y += LineHeight(1f);
+            EditorGUI.PropertyField(position, loopProperty, loopLabel);
+        }
+        
+        private void OnGUIWithAssetReferenceProperty(Rect position, SerializedProperty property)
+        {
+            position.y += LineHeight(0.5f);
+            var fieldName = property.FindPropertyRelative("fieldName").stringValue;
+            var fieldType = (ExtensionFieldType)property.FindPropertyRelative("type").intValue;
+            var label = new GUIContent(fieldName);
+            var valueProperty = fieldType switch
+            {
+                ExtensionFieldType.HumanoidAnimation => property.FindPropertyRelative("humanoidAnimationClipValue"),
+                _ => null,
+            };
+
+            if (valueProperty == null)
+            {
+                EditorGUILayout.LabelField("(error: unsupported type!)");
+                return;
+            }
+
+            position.height = LineHeight(1f);
+            EditorGUI.PropertyField(position, valueProperty, label);
+
+            if (fieldType is ExtensionFieldType.HumanoidAnimation &&
+                valueProperty.objectReferenceValue is AnimationClip clip &&
+                !clip.isHumanMotion)
+            {
+                EditorGUI.indentLevel++;
+                EditorGUILayout.LabelField(
+                    "Error: The clip seems not Humanoid Animation!", 
+                    (GUIStyle) "CN StatusWarn"
+                    );
+                EditorGUI.indentLevel--;
+            }
+        }
+
+        private void OnGUIWithOverridableProperty(Rect position, SerializedProperty property)
         {
             // 「overrideするかどうか + overrideする対象の値」みたいな見え方にする。
             // foo: override   [x]
@@ -42,7 +121,7 @@ namespace Baxter.ClusterScriptExtensions.Editor.Inspector
             propertyPosition.y = position.y + LineHeight(1f);
             propertyPosition.height = LineHeight(1f);
 
-            // textAreaを使う場合、propertyPositionの位置にはラベルだけ書いて下にずらす
+            // textAreaを使う場合、ラベルだけ書いて下にずらす
             if (useTextArea)
             {
                 EditorGUI.LabelField(propertyPosition, fieldName);
@@ -119,6 +198,9 @@ namespace Baxter.ClusterScriptExtensions.Editor.Inspector
             EditorGUI.EndDisabledGroup();
         }
 
+        private static ExtensionFieldType GetFieldType(SerializedProperty property)
+            => (ExtensionFieldType)property.FindPropertyRelative("type").intValue;
+        
         private static bool UseTextArea(SerializedProperty property)
         {
             var type = (ExtensionFieldType)property.FindPropertyRelative("type").intValue;
