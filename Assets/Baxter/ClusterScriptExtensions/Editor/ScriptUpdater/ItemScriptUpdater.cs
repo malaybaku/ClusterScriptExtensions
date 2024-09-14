@@ -1,4 +1,5 @@
 using System;
+using Baxter.ClusterScriptExtensions.Editor.ComponentUpdater;
 using ClusterVR.CreatorKit.Item.Implements;
 using UnityEditor;
 
@@ -11,7 +12,7 @@ namespace Baxter.ClusterScriptExtensions.Editor.ScriptUpdater
     {
         /// <summary>
         /// ScriptableItemExtensionの内容に基づいてソースコードを生成し、
-        /// ScriptableItemのテキストとして適用する
+        /// ScriptableItemのテキストとして適用する。また、そのときアセットの参照状況も適用する
         /// </summary>
         /// <param name="ext"></param>
         public static void ApplyGeneratedSourceCode(ScriptableItemExtension ext)
@@ -34,6 +35,12 @@ namespace Baxter.ClusterScriptExtensions.Editor.ScriptUpdater
             var sourceCodeProperty = serializedTarget.FindProperty("sourceCode");
             sourceCodeProperty.stringValue = script;
             serializedTarget.ApplyModifiedProperties();
+            
+            ItemAudioSetListUpdater.Update(ext);
+            HumanoidAnimationListUpdater.Update(ext);
+            WorldItemReferenceListUpdater.Update(ext);
+            WorldItemTemplateListUpdater.Update(ext);
+            ItemMaterialSetListUpdater.Update(ext);
         }
         
         // 指定された位置のコードを消して別のテキストに置き換えたスクリプト文字列を生成する。

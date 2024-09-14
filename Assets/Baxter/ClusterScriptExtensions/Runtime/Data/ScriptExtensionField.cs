@@ -1,4 +1,5 @@
 using System;
+using ClusterVR.CreatorKit.Item.Implements;
 using Newtonsoft.Json;
 using UnityEngine;
 
@@ -32,6 +33,7 @@ namespace Baxter.ClusterScriptExtensions
         [SerializeField] private Vector2 vector2InitialValue;
         [SerializeField] private Vector3 vector3InitialValue;
         [SerializeField] private Quaternion quaternionInitialValue;
+        //NOTE: Asset参照系は初期値がない(常にnull)
         
         // Inspectorで編集するのはここから下の部分
         
@@ -45,7 +47,12 @@ namespace Baxter.ClusterScriptExtensions
         [SerializeField] private Vector2 vector2Value;
         [SerializeField] private Vector3 vector3Value;
         [SerializeField] private Quaternion quaternionValue;
- 
+        [SerializeField] private AudioClip audioClipValue;
+        [SerializeField] private AnimationClip humanoidAnimationClipValue;
+        // NOTE: fieldTypeによってシーン上アイテムを指す場合とprefabを指す場合がある
+        [SerializeField] private Item itemReferenceValue;
+        [SerializeField] private Material materialValue;
+
         #region Meta Properties
 
         public bool HasRange
@@ -136,6 +143,15 @@ namespace Baxter.ClusterScriptExtensions
             set => quaternionInitialValue = value;
         }
 
+        //HACK: field自体がbool値のケースではなく、Audioのループフラグとして転用しているときにフラグを外から使うことがある
+        public bool BoolValue => boolValue;
+
+        //NOTE: アセット参照系のものは初期値がnullなので、overrideと関係なく実際にアサインされた値を正とする
+        public AudioClip AudioClipValue => audioClipValue;
+        public AnimationClip HumanoidAnimationClipValue => humanoidAnimationClipValue;
+        public Item ItemReferenceValue => itemReferenceValue;
+        public Material MaterialValue => materialValue;
+        
         private bool ActiveBoolValue => overrideValue ? boolValue : boolInitialValue;
         private int ActiveIntValue => overrideValue ? intValue : intInitialValue;
         private float ActiveFloatValue => overrideValue ? floatValue : floatInitialValue;
@@ -162,6 +178,11 @@ namespace Baxter.ClusterScriptExtensions
                     => $"new Vector3({ActiveVector3Value.x:G}, {ActiveVector3Value.y:G}, {ActiveVector3Value.z:G})",
                 ExtensionFieldType.Quaternion
                     => $"new Quaternion({ActiveQuaternionValue.x:G}, {ActiveQuaternionValue.y:G}, {ActiveQuaternionValue.z:G}, {ActiveQuaternionValue.w:G})",
+                ExtensionFieldType.AudioClip => $"$.audio(\"{fieldName}\")",
+                ExtensionFieldType.HumanoidAnimation => $"$.humanoidAnimation(\"{fieldName}\")",
+                ExtensionFieldType.WorldItem => $"$.worldItemReference(\"{fieldName}\")",
+                ExtensionFieldType.WorldItemTemplate => $"new WorldItemTemplateId(\"{fieldName}\")",
+                ExtensionFieldType.Material => $"$.material(\"{fieldName}\")",
                 _ => throw new InvalidOperationException("Unsupported type!"),
             };
         }
@@ -192,6 +213,11 @@ namespace Baxter.ClusterScriptExtensions
             vector2Value = source.vector2Value;
             vector3Value = source.vector3Value;
             quaternionValue = source.quaternionValue;
+
+            audioClipValue = source.audioClipValue;
+            humanoidAnimationClipValue = source.humanoidAnimationClipValue;
+            itemReferenceValue = source.itemReferenceValue;
+            materialValue = source.materialValue;
         }
         
         public void ResetValues()
@@ -204,6 +230,11 @@ namespace Baxter.ClusterScriptExtensions
             vector2Value = vector2InitialValue;
             vector3Value = vector3InitialValue;
             quaternionValue = quaternionInitialValue;
+
+            audioClipValue = null;
+            humanoidAnimationClipValue = null;
+            itemReferenceValue = null;
+            materialValue = null;
         }
     }
 }

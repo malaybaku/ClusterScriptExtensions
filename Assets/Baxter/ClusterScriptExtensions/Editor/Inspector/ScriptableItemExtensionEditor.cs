@@ -27,6 +27,7 @@ namespace Baxter.ClusterScriptExtensions.Editor.Inspector
             for (var i = 0; i < size; i++)
             {
                 EditorGUILayout.PropertyField(fieldsProperty.GetArrayElementAtIndex(i));
+                EditorGUILayout.Space();
             }
             EditorGUI.indentLevel--;
 

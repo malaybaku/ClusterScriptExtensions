@@ -222,7 +222,7 @@ Transform:
   m_Children:
   - {fileID: 1087842112}
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &62710053
 MonoBehaviour:
@@ -546,7 +546,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &395168193
 MonoBehaviour:
@@ -588,6 +588,10 @@ MonoBehaviour:
     vector2Value: {x: 0, y: 0}
     vector3Value: {x: 0, y: 0, z: 0}
     quaternionValue: {x: 0, y: 0, z: 0, w: 1}
+    audioClipValue: {fileID: 0}
+    humanoidAnimationClipValue: {fileID: 0}
+    itemReferenceValue: {fileID: 0}
+    materialValue: {fileID: 0}
 --- !u!114 &395168194
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -619,6 +623,103 @@ MonoBehaviour:
     value: 12967882894876145313
   itemName: Sample00_Hello
   size: {x: 0, y: 0, z: 0}
+--- !u!1 &712110324
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 712110325}
+  - component: {fileID: 712110328}
+  - component: {fileID: 712110327}
+  - component: {fileID: 712110326}
+  m_Layer: 0
+  m_Name: Sphere
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &712110325
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 712110324}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 1, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1792626625}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!135 &712110326
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 712110324}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.5
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!23 &712110327
+MeshRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 712110324}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 2100000, guid: 1673944c63e89fd4f860310beb4951ae, type: 2}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_AdditionalVertexStreams: {fileID: 0}
+--- !u!33 &712110328
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 712110324}
+  m_Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
 --- !u!1 &942585007
 GameObject:
   m_ObjectHideFlags: 0
@@ -649,7 +750,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &942585009
 MonoBehaviour:
@@ -670,7 +771,7 @@ MonoBehaviour:
   myVector2: {x: 0, y: 0}
   myVector3: {x: 0, y: 0, z: 0}
   myRotation: {x: 0, y: 0, z: 0, w: 0}
-  myLongText: "\u3042\n\u3044\n\u3046\n\u3048"
+  myLongText: 
   myRangeInt: 0
   myRangeFloat: 1
   myEnumValue: 0
@@ -730,13 +831,17 @@ MonoBehaviour:
     vector3InitialValue: {x: 0, y: 0, z: 0}
     quaternionInitialValue: {x: 0, y: 0, z: 0, w: 1}
     overrideValue: 1
-    boolValue: 1
+    boolValue: 0
     intValue: 0
     floatValue: 0
     stringValue: 
     vector2Value: {x: 0, y: 0}
     vector3Value: {x: 0, y: 0, z: 0}
     quaternionValue: {x: 0, y: 0, z: 0, w: 1}
+    audioClipValue: {fileID: 0}
+    humanoidAnimationClipValue: {fileID: 0}
+    itemReferenceValue: {fileID: 0}
+    materialValue: {fileID: 0}
   - fieldName: myInt
     type: 1
     fieldDefinedLocation:
@@ -757,12 +862,16 @@ MonoBehaviour:
     quaternionInitialValue: {x: 0, y: 0, z: 0, w: 1}
     overrideValue: 1
     boolValue: 0
-    intValue: 23
+    intValue: 25
     floatValue: 0
     stringValue: 
     vector2Value: {x: 0, y: 0}
     vector3Value: {x: 0, y: 0, z: 0}
     quaternionValue: {x: 0, y: 0, z: 0, w: 1}
+    audioClipValue: {fileID: 0}
+    humanoidAnimationClipValue: {fileID: 0}
+    itemReferenceValue: {fileID: 0}
+    materialValue: {fileID: 0}
   - fieldName: myFloat
     type: 2
     fieldDefinedLocation:
@@ -781,14 +890,18 @@ MonoBehaviour:
     vector2InitialValue: {x: 0, y: 0}
     vector3InitialValue: {x: 0, y: 0, z: 0}
     quaternionInitialValue: {x: 0, y: 0, z: 0, w: 1}
-    overrideValue: 1
+    overrideValue: 0
     boolValue: 0
     intValue: 0
-    floatValue: 4.5
+    floatValue: 12
     stringValue: 
     vector2Value: {x: 0, y: 0}
     vector3Value: {x: 0, y: 0, z: 0}
     quaternionValue: {x: 0, y: 0, z: 0, w: 1}
+    audioClipValue: {fileID: 0}
+    humanoidAnimationClipValue: {fileID: 0}
+    itemReferenceValue: {fileID: 0}
+    materialValue: {fileID: 0}
   - fieldName: myString
     type: 3
     fieldDefinedLocation:
@@ -811,10 +924,14 @@ MonoBehaviour:
     boolValue: 0
     intValue: 0
     floatValue: 0
-    stringValue: TestABC
+    stringValue: aaa
     vector2Value: {x: 0, y: 0}
     vector3Value: {x: 0, y: 0, z: 0}
     quaternionValue: {x: 0, y: 0, z: 0, w: 1}
+    audioClipValue: {fileID: 0}
+    humanoidAnimationClipValue: {fileID: 0}
+    itemReferenceValue: {fileID: 0}
+    materialValue: {fileID: 0}
   - fieldName: myVector2
     type: 4
     fieldDefinedLocation:
@@ -833,14 +950,18 @@ MonoBehaviour:
     vector2InitialValue: {x: 1, y: 2}
     vector3InitialValue: {x: 0, y: 0, z: 0}
     quaternionInitialValue: {x: 0, y: 0, z: 0, w: 1}
-    overrideValue: 1
+    overrideValue: 0
     boolValue: 0
     intValue: 0
     floatValue: 0
     stringValue: 
-    vector2Value: {x: 3, y: 4}
+    vector2Value: {x: 6, y: 6}
     vector3Value: {x: 0, y: 0, z: 0}
     quaternionValue: {x: 0, y: 0, z: 0, w: 1}
+    audioClipValue: {fileID: 0}
+    humanoidAnimationClipValue: {fileID: 0}
+    itemReferenceValue: {fileID: 0}
+    materialValue: {fileID: 0}
   - fieldName: myVector3
     type: 5
     fieldDefinedLocation:
@@ -859,7 +980,7 @@ MonoBehaviour:
     vector2InitialValue: {x: 0, y: 0}
     vector3InitialValue: {x: 3, y: 4, z: 5}
     quaternionInitialValue: {x: 0, y: 0, z: 0, w: 1}
-    overrideValue: 0
+    overrideValue: 1
     boolValue: 0
     intValue: 0
     floatValue: 0
@@ -867,6 +988,10 @@ MonoBehaviour:
     vector2Value: {x: 0, y: 0}
     vector3Value: {x: 5, y: 6, z: 7}
     quaternionValue: {x: 0, y: 0, z: 0, w: 1}
+    audioClipValue: {fileID: 0}
+    humanoidAnimationClipValue: {fileID: 0}
+    itemReferenceValue: {fileID: 0}
+    materialValue: {fileID: 0}
   - fieldName: myQuaternion
     type: 6
     fieldDefinedLocation:
@@ -885,14 +1010,18 @@ MonoBehaviour:
     vector2InitialValue: {x: 0, y: 0}
     vector3InitialValue: {x: 0, y: 0, z: 0}
     quaternionInitialValue: {x: 0, y: 0, z: 0, w: 1}
-    overrideValue: 1
+    overrideValue: 0
     boolValue: 0
     intValue: 0
     floatValue: 0
     stringValue: 
     vector2Value: {x: 0, y: 0}
     vector3Value: {x: 0, y: 0, z: 0}
-    quaternionValue: {x: 0.12767944, y: 0.14487815, z: 0.23929836, w: 0.9515485}
+    quaternionValue: {x: 0, y: 0.70710677, z: 0, w: 0.70710677}
+    audioClipValue: {fileID: 0}
+    humanoidAnimationClipValue: {fileID: 0}
+    itemReferenceValue: {fileID: 0}
+    materialValue: {fileID: 0}
 --- !u!114 &1043978764
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -906,15 +1035,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sourceCodeAsset: {fileID: 0}
-  sourceCode: "// @field(bool)\r\nconst myBool = true;;\r\n// @field(int)\r\nconst
-    myInt = 23;;\r\n// @field(float)\r\nconst myFloat = 4.5;;\r\n// @field(string)\r\nconst
-    myString = \"Test\";;\r\n// @field(Vector2)\r\nconst myVector2 = new Vector2(3,
-    4);;\r\n// @field(Vector3)\r\nconst myVector3 = new Vector3(3, 4, 5);;\r\n//
-    @field(Quaternion)\r\nconst myQuaternion = new Quaternion(0.1276794, 0.1448781,
-    0.2392984, 0.9515485);;\r\n\r\n$.onInteract(() => { \r\n  $.log(`myBool = ${myBool}`);\r\n 
-    $.log(`myInt = ${myInt}`);\r\n  $.log(`myFloat = ${myFloat}`);\r\n  $.log(`myString
-    = ${myString}`);\r\n  $.log(`myVector2 = ${myVector2}`);\r\n  $.log(`myVector3
-    = ${myVector3}`);\r\n  $.log(`myQuaternion = ${myQuaternion}`);\r\n});\r\n"
+  sourceCode: "// @field(bool)\r\nconst myBool = false;;\r\n// @field(int)\r\nconst
+    myInt = 25;;\r\n// @field(float)\r\nconst myFloat = 2.3;;\r\n// @field(string)\r\nconst
+    myString = \"Test\";;\r\n// @field(Vector2)\r\nconst myVector2 = new Vector2(1,
+    2);;\r\n// @field(Vector3)\r\nconst myVector3 = new Vector3(5, 6, 7);;\r\n//
+    @field(Quaternion)\r\nconst myQuaternion = new Quaternion(0, 0, 0, 1);;\r\n\r\n$.onInteract(()
+    => { \r\n  $.log(`myBool = ${myBool}`);\r\n  $.log(`myInt = ${myInt}`);\r\n 
+    $.log(`myFloat = ${myFloat}`);\r\n  $.log(`myString = ${myString}`);\r\n  $.log(`myVector2
+    = ${myVector2}`);\r\n  $.log(`myVector3 = ${myVector3}`);\r\n  $.log(`myQuaternion
+    = ${myQuaternion}`);\r\n});\r\n"
 --- !u!114 &1043978765
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1007,7 +1136,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1087842111
 GameObject:
@@ -1255,7 +1384,7 @@ Transform:
   m_Children:
   - {fileID: 341351982}
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1411427679
 MonoBehaviour:
@@ -1288,6 +1417,356 @@ MonoBehaviour:
     worldItemTemplate: {fileID: 4539557075613711507, guid: da0a31fd476111949b875c9a8a0b0a66, type: 3}
     itemTemplateId:
       value: 0
+--- !u!1 &1792626618
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1792626625}
+  - component: {fileID: 1792626624}
+  - component: {fileID: 1792626623}
+  - component: {fileID: 1792626622}
+  - component: {fileID: 1792626621}
+  - component: {fileID: 1792626620}
+  - component: {fileID: 1792626619}
+  - component: {fileID: 1792626628}
+  - component: {fileID: 1792626627}
+  - component: {fileID: 1792626626}
+  m_Layer: 0
+  m_Name: Sample05_AssetReferences
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1792626619
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1792626618}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b823bd601c25d6643a680126a20d89c9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  templateCode: {fileID: 5022602860645237092, guid: 0c2596e0e5a86804b8564022ca36b546, type: 3}
+  extensionFields:
+  - fieldName: myAudio
+    type: 1001
+    fieldDefinedLocation:
+      startLine: 2
+      startColumn: 6
+      endLine: 2
+      endColumn: 27
+    hasRange: 0
+    rangeMin: 0
+    rangeMax: 0
+    useTextArea: 0
+    boolInitialValue: 0
+    intInitialValue: 0
+    floatInitialValue: 0
+    stringInitialValue: 
+    vector2InitialValue: {x: 0, y: 0}
+    vector3InitialValue: {x: 0, y: 0, z: 0}
+    quaternionInitialValue: {x: 0, y: 0, z: 0, w: 1}
+    overrideValue: 0
+    boolValue: 0
+    intValue: 0
+    floatValue: 0
+    stringValue: 
+    vector2Value: {x: 0, y: 0}
+    vector3Value: {x: 0, y: 0, z: 0}
+    quaternionValue: {x: 0, y: 0, z: 0, w: 1}
+    audioClipValue: {fileID: 0}
+    humanoidAnimationClipValue: {fileID: 0}
+    itemReferenceValue: {fileID: 0}
+    materialValue: {fileID: 0}
+  - fieldName: myMotion
+    type: 1002
+    fieldDefinedLocation:
+      startLine: 5
+      startColumn: 6
+      endLine: 5
+      endColumn: 40
+    hasRange: 0
+    rangeMin: 0
+    rangeMax: 0
+    useTextArea: 0
+    boolInitialValue: 0
+    intInitialValue: 0
+    floatInitialValue: 0
+    stringInitialValue: 
+    vector2InitialValue: {x: 0, y: 0}
+    vector3InitialValue: {x: 0, y: 0, z: 0}
+    quaternionInitialValue: {x: 0, y: 0, z: 0, w: 1}
+    overrideValue: 0
+    boolValue: 0
+    intValue: 0
+    floatValue: 0
+    stringValue: 
+    vector2Value: {x: 0, y: 0}
+    vector3Value: {x: 0, y: 0, z: 0}
+    quaternionValue: {x: 0, y: 0, z: 0, w: 1}
+    audioClipValue: {fileID: 0}
+    humanoidAnimationClipValue: {fileID: 0}
+    itemReferenceValue: {fileID: 0}
+    materialValue: {fileID: 0}
+  - fieldName: otherItemInstance
+    type: 1003
+    fieldDefinedLocation:
+      startLine: 8
+      startColumn: 6
+      endLine: 8
+      endColumn: 50
+    hasRange: 0
+    rangeMin: 0
+    rangeMax: 0
+    useTextArea: 0
+    boolInitialValue: 0
+    intInitialValue: 0
+    floatInitialValue: 0
+    stringInitialValue: 
+    vector2InitialValue: {x: 0, y: 0}
+    vector3InitialValue: {x: 0, y: 0, z: 0}
+    quaternionInitialValue: {x: 0, y: 0, z: 0, w: 1}
+    overrideValue: 0
+    boolValue: 0
+    intValue: 0
+    floatValue: 0
+    stringValue: 
+    vector2Value: {x: 0, y: 0}
+    vector3Value: {x: 0, y: 0, z: 0}
+    quaternionValue: {x: 0, y: 0, z: 0, w: 1}
+    audioClipValue: {fileID: 0}
+    humanoidAnimationClipValue: {fileID: 0}
+    itemReferenceValue: {fileID: 395168195}
+    materialValue: {fileID: 0}
+  - fieldName: creatableItem
+    type: 1004
+    fieldDefinedLocation:
+      startLine: 11
+      startColumn: 6
+      endLine: 11
+      endColumn: 49
+    hasRange: 0
+    rangeMin: 0
+    rangeMax: 0
+    useTextArea: 0
+    boolInitialValue: 0
+    intInitialValue: 0
+    floatInitialValue: 0
+    stringInitialValue: 
+    vector2InitialValue: {x: 0, y: 0}
+    vector3InitialValue: {x: 0, y: 0, z: 0}
+    quaternionInitialValue: {x: 0, y: 0, z: 0, w: 1}
+    overrideValue: 0
+    boolValue: 0
+    intValue: 0
+    floatValue: 0
+    stringValue: 
+    vector2Value: {x: 0, y: 0}
+    vector3Value: {x: 0, y: 0, z: 0}
+    quaternionValue: {x: 0, y: 0, z: 0, w: 1}
+    audioClipValue: {fileID: 0}
+    humanoidAnimationClipValue: {fileID: 0}
+    itemReferenceValue: {fileID: 1866279324507332143, guid: c6125a4d1fb913a4da37dbc8a300d26f, type: 3}
+    materialValue: {fileID: 0}
+  - fieldName: myRendererMaterial
+    type: 1005
+    fieldDefinedLocation:
+      startLine: 14
+      startColumn: 6
+      endLine: 14
+      endColumn: 41
+    hasRange: 0
+    rangeMin: 0
+    rangeMax: 0
+    useTextArea: 0
+    boolInitialValue: 0
+    intInitialValue: 0
+    floatInitialValue: 0
+    stringInitialValue: 
+    vector2InitialValue: {x: 0, y: 0}
+    vector3InitialValue: {x: 0, y: 0, z: 0}
+    quaternionInitialValue: {x: 0, y: 0, z: 0, w: 1}
+    overrideValue: 0
+    boolValue: 0
+    intValue: 0
+    floatValue: 0
+    stringValue: 
+    vector2Value: {x: 0, y: 0}
+    vector3Value: {x: 0, y: 0, z: 0}
+    quaternionValue: {x: 0, y: 0, z: 0, w: 1}
+    audioClipValue: {fileID: 0}
+    humanoidAnimationClipValue: {fileID: 0}
+    itemReferenceValue: {fileID: 0}
+    materialValue: {fileID: 2100000, guid: 1673944c63e89fd4f860310beb4951ae, type: 2}
+--- !u!114 &1792626620
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1792626618}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e61061896c654489a41575fc291bf4a0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sourceCodeAsset: {fileID: 0}
+  sourceCode: "// @field(AudioClip)\r\nconst myAudio = $.audio(\"myAudio\");;\r\n\r\n//
+    @field(HumanoidAnimation)\r\nconst myMotion = $.humanoidAnimation(\"myMotion\");;\r\n\r\n//
+    @field(WorldItem)\r\nconst otherItemInstance = $.worldItemReference(\"otherItemInstance\");;\r\n\r\n//
+    @field(WorldItemTemplate)\r\nconst creatableItem = new WorldItemTemplateId(\"creatableItem\");;\r\n\r\n//
+    @field(Material)\r\nconst myRendererMaterial = $.material(\"myRendererMaterial\");;\r\n\r\n\r\n$.onInteract(()
+    => { \r\n  $.log(\"try play audio...\");\r\n  myAudio.play();\r\n});\r\n"
+--- !u!114 &1792626621
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1792626618}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3977a5e65e72f4db4b85ddba10d48dd4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  id:
+    value: 0
+  itemName: 
+  size: {x: 0, y: 0, z: 0}
+--- !u!65 &1792626622
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1792626618}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!23 &1792626623
+MeshRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1792626618}
+  m_Enabled: 1
+  m_CastShadows: 1
+  m_ReceiveShadows: 1
+  m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
+  m_RayTraceProcedural: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 1896841071}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 3
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 0
+  m_SortingLayer: 0
+  m_SortingOrder: 0
+  m_AdditionalVertexStreams: {fileID: 0}
+--- !u!33 &1792626624
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1792626618}
+  m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!4 &1792626625
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1792626618}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 10, y: 0.5, z: 4}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 712110325}
+  m_Father: {fileID: 0}
+  m_RootOrder: 9
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1792626626
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1792626618}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 62136917112e41e197a20e5b01fbb1cf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemMaterialSets:
+  - id: myRendererMaterial
+    material: {fileID: 2100000, guid: 1673944c63e89fd4f860310beb4951ae, type: 2}
+--- !u!114 &1792626627
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1792626618}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 02f60bfc9a2c4b04bcd3524b54a1e838, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  worldItemTemplates:
+  - id: creatableItem
+    worldItemTemplate: {fileID: 1866279324507332143, guid: c6125a4d1fb913a4da37dbc8a300d26f, type: 3}
+    itemTemplateId:
+      value: 0
+--- !u!114 &1792626628
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1792626618}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 49554f6eafb04d538a589436719e8fa1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  worldItemReferences:
+  - id: otherItemInstance
+    item: {fileID: 395168195}
 --- !u!1 &1815628113
 GameObject:
   m_ObjectHideFlags: 0
@@ -1382,6 +1861,98 @@ Transform:
   m_Father: {fileID: 95799366}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
+--- !u!21 &1896841071
+Material:
+  serializedVersion: 8
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Default-Material (Instance)
+  m_Shader: {fileID: 46, guid: 0000000000000000f000000000000000, type: 0}
+  m_ValidKeywords:
+  - _EMISSION
+  m_InvalidKeywords: []
+  m_LightmapFlags: 1
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs:
+    - _BumpMap:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _Detail:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _DetailAlbedoMap:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _DetailMask:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _DetailNormalMap:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _EmissionMap:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _MainTex:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _MetallicGlossMap:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _Occlusion:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _OcclusionMap:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _ParallaxMap:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Ints: []
+    m_Floats:
+    - _AlphaTestRef: 0.5
+    - _BumpScale: 1
+    - _Cutoff: 0.5
+    - _DetailNormalMapScale: 1
+    - _DstBlend: 0
+    - _EmissionScaleUI: 1
+    - _GlossMapScale: 1
+    - _Glossiness: 0.5
+    - _GlossyReflections: 1
+    - _Lightmapping: 1
+    - _Metallic: 0
+    - _Mode: 0
+    - _OcclusionStrength: 1
+    - _Parallax: 0.02
+    - _SmoothnessTextureChannel: 0
+    - _SpecularHighlights: 1
+    - _SrcBlend: 1
+    - _UVSec: 0
+    - _ZWrite: 1
+    m_Colors:
+    - _Color: {r: 1, g: 1, b: 1, a: 1}
+    - _EmissionColor: {r: 0, g: 0, b: 0, a: 0.99999994}
+    - _EmissionColorUI: {r: 0, g: 0, b: 0, a: 1}
+    - _EmissionColorWithMapUI: {r: 1, g: 1, b: 1, a: 1}
+  m_BuildTextureStacks: []
 --- !u!1 &1939857328
 GameObject:
   m_ObjectHideFlags: 0
@@ -1426,6 +1997,63 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7d4a729ae3f80437b826f95e71f9c942, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1001 &1972760754
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 8546996133407889402, guid: 9c523678b54c1eb44825d51f5672ff9c, type: 3}
+      propertyPath: m_Name
+      value: PrefabModeExample_AssetReference
+      objectReference: {fileID: 0}
+    - target: {fileID: 8546996133407889403, guid: 9c523678b54c1eb44825d51f5672ff9c, type: 3}
+      propertyPath: m_RootOrder
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 8546996133407889403, guid: 9c523678b54c1eb44825d51f5672ff9c, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8546996133407889403, guid: 9c523678b54c1eb44825d51f5672ff9c, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8546996133407889403, guid: 9c523678b54c1eb44825d51f5672ff9c, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8546996133407889403, guid: 9c523678b54c1eb44825d51f5672ff9c, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8546996133407889403, guid: 9c523678b54c1eb44825d51f5672ff9c, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8546996133407889403, guid: 9c523678b54c1eb44825d51f5672ff9c, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8546996133407889403, guid: 9c523678b54c1eb44825d51f5672ff9c, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8546996133407889403, guid: 9c523678b54c1eb44825d51f5672ff9c, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8546996133407889403, guid: 9c523678b54c1eb44825d51f5672ff9c, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8546996133407889403, guid: 9c523678b54c1eb44825d51f5672ff9c, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 9c523678b54c1eb44825d51f5672ff9c, type: 3}
 --- !u!1 &2123536157
 GameObject:
   m_ObjectHideFlags: 0
@@ -1442,7 +2070,7 @@ GameObject:
   - component: {fileID: 2123536163}
   - component: {fileID: 2123536162}
   m_Layer: 0
-  m_Name: Cube
+  m_Name: Sample04_ArrangedValues
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1562,10 +2190,14 @@ MonoBehaviour:
     boolValue: 0
     intValue: 0
     floatValue: 0
-    stringValue: 
+    stringValue: "\u3042\u306E\u30A4\u30FC\u30CF\u30C8\u30FC\u30F4\u30A9\u306E\u306A\u3093\u3068\u304B\u304B\u3093\u3068\u304B\n2\u884C\u76EE\n3\u884C\u76EE\n4\u884C\u76EE\u304C\u30AE\u30EA\u30AE\u30EA\u3046\u3064\u308B"
     vector2Value: {x: 0, y: 0}
     vector3Value: {x: 0, y: 0, z: 0}
     quaternionValue: {x: 0, y: 0, z: 0, w: 1}
+    audioClipValue: {fileID: 0}
+    humanoidAnimationClipValue: {fileID: 0}
+    itemReferenceValue: {fileID: 0}
+    materialValue: {fileID: 0}
   - fieldName: myRangeInt
     type: 1
     fieldDefinedLocation:
@@ -1586,12 +2218,16 @@ MonoBehaviour:
     quaternionInitialValue: {x: 0, y: 0, z: 0, w: 1}
     overrideValue: 0
     boolValue: 0
-    intValue: 0
+    intValue: -1
     floatValue: 0
     stringValue: 
     vector2Value: {x: 0, y: 0}
     vector3Value: {x: 0, y: 0, z: 0}
     quaternionValue: {x: 0, y: 0, z: 0, w: 1}
+    audioClipValue: {fileID: 0}
+    humanoidAnimationClipValue: {fileID: 0}
+    itemReferenceValue: {fileID: 0}
+    materialValue: {fileID: 0}
   - fieldName: myRangeFloat
     type: 2
     fieldDefinedLocation:
@@ -1610,14 +2246,18 @@ MonoBehaviour:
     vector2InitialValue: {x: 0, y: 0}
     vector3InitialValue: {x: 0, y: 0, z: 0}
     quaternionInitialValue: {x: 0, y: 0, z: 0, w: 1}
-    overrideValue: 0
+    overrideValue: 1
     boolValue: 0
     intValue: 0
-    floatValue: 1
+    floatValue: 3.89
     stringValue: 
     vector2Value: {x: 0, y: 0}
     vector3Value: {x: 0, y: 0, z: 0}
     quaternionValue: {x: 0, y: 0, z: 0, w: 1}
+    audioClipValue: {fileID: 0}
+    humanoidAnimationClipValue: {fileID: 0}
+    itemReferenceValue: {fileID: 0}
+    materialValue: {fileID: 0}
   - fieldName: myEnum
     type: 1
     fieldDefinedLocation:
@@ -1636,14 +2276,18 @@ MonoBehaviour:
     vector2InitialValue: {x: 0, y: 0}
     vector3InitialValue: {x: 0, y: 0, z: 0}
     quaternionInitialValue: {x: 0, y: 0, z: 0, w: 1}
-    overrideValue: 0
+    overrideValue: 1
     boolValue: 0
-    intValue: 0
+    intValue: 1234
     floatValue: 0
     stringValue: 
     vector2Value: {x: 0, y: 0}
     vector3Value: {x: 0, y: 0, z: 0}
     quaternionValue: {x: 0, y: 0, z: 0, w: 1}
+    audioClipValue: {fileID: 0}
+    humanoidAnimationClipValue: {fileID: 0}
+    itemReferenceValue: {fileID: 0}
+    materialValue: {fileID: 0}
 --- !u!114 &2123536163
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1659,9 +2303,9 @@ MonoBehaviour:
   sourceCodeAsset: {fileID: 0}
   sourceCode: "// @field(string), @textArea\r\nconst myLongText = \"\";\r\n\r\n//
     @field(int), @range(-10, 20)\r\nconst myRangeInt = 0;;\r\n\r\n// @field(float),
-    @range(0.1, 5.0)\r\nconst myRangeFloat = 1;;\r\n\r\n// NOTE: enum\u306F\u307E\u3060\u5BFE\u5FDC\u3067\u304D\u3066\u3044\u306A\u3044\r\n//
+    @range(0.1, 5.0)\r\nconst myRangeFloat = 3.89;;\r\n\r\n// NOTE: enum\u306F\u307E\u3060\u5BFE\u5FDC\u3067\u304D\u3066\u3044\u306A\u3044\r\n//
     @field(int), @enum(\"OptionA\", \"2\u3064\u76EE\u306E\u30AA\u30D7\u30B7\u30E7\u30F3\",
-    \"No.3\")\r\nconst myEnum = 0;;\r\n\r\n$.onInteract(() => { \r\n  $.log(`long
+    \"No.3\")\r\nconst myEnum = 1234;;\r\n\r\n$.onInteract(() => { \r\n  $.log(`long
     text... ${myLongText}`);\r\n\r\n  $.log(`range int... ${myRangeInt}`);\r\n  $.log(`range
     float... ${myRangeFloat}`);\r\n\r\n  $.log(`enum... ${myEnum}`);\r\n});\r\n"
 --- !u!114 &2123536164
@@ -1689,7 +2333,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1866279324507332131, guid: c6125a4d1fb913a4da37dbc8a300d26f, type: 3}
       propertyPath: m_RootOrder
-      value: 3
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 1866279324507332131, guid: c6125a4d1fb913a4da37dbc8a300d26f, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1750,7 +2394,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4539557075613711519, guid: da0a31fd476111949b875c9a8a0b0a66, type: 3}
       propertyPath: m_RootOrder
-      value: 4
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 4539557075613711519, guid: da0a31fd476111949b875c9a8a0b0a66, type: 3}
       propertyPath: m_LocalPosition.x
