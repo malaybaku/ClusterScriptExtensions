@@ -7,23 +7,11 @@ namespace Baxter.ClusterScriptExtensions.Editor.ComponentUpdater
 {
     public static class HumanoidAnimationListUpdater
     {
-        private readonly struct HumanoidAnimationElement
-        {
-            public string Id { get; }
-            public AnimationClip Clip { get; }
-
-            public HumanoidAnimationElement(string id, AnimationClip clip)
-            {
-                Id = id;
-                Clip = clip;
-            }
-        }        
-
         public static void Update(ScriptableItemExtension ext)
         {
             var elements = ext.ExtensionFields
                 .Where(f => f.Type is ExtensionFieldType.HumanoidAnimation)
-                .Select(f => new HumanoidAnimationElement(f.FieldName, f.HumanoidAnimationClipValue))
+                .Select(f => (Id: f.FieldName, Clip: f.HumanoidAnimationClipValue))
                 .ToArray();
 
             var component = ext.GetComponent<HumanoidAnimationList>();
@@ -45,7 +33,7 @@ namespace Baxter.ClusterScriptExtensions.Editor.ComponentUpdater
                 component = ext.gameObject.AddComponent<HumanoidAnimationList>();
             }
 
-            //NOTE: animationプロパティを触りに行かないといけないので、一旦配列を作ったあとでSerializedObjectとして触りに行く(≒private fieldアクセスをやる)
+            //NOTE: animationプロパティを触りに行かないといけないので、一旦配列を作ったあとでSerializedObjectとして改修する
             var contents = elements
                 .Select(elem => new HumanoidAnimationListEntry(elem.Id, null))
                 .ToArray();

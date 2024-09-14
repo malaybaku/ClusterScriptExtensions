@@ -12,25 +12,11 @@ namespace Baxter.ClusterScriptExtensions.Editor.ComponentUpdater
     /// </summary>
     public static class ItemAudioSetListUpdater
     {
-        private readonly struct AudioElement
-        {
-            public string Id { get; }
-            public AudioClip Clip { get; }
-            public bool Loop { get; }
-
-            public AudioElement(string id, AudioClip clip, bool loop)
-            {
-                Id = id;
-                Clip = clip;
-                Loop = loop;
-            }
-        }        
-
         public static void Update(ScriptableItemExtension ext)
         {
             var audioClipElements = ext.ExtensionFields
                 .Where(f => f.Type is ExtensionFieldType.AudioClip)
-                .Select(f => new AudioElement(f.FieldName, f.AudioClipValue, f.BoolValue))
+                .Select(f => (Id: f.FieldName, Clip: f.AudioClipValue, Loop: f.BoolValue))
                 .ToArray();
 
             var component = ext.GetComponent<ItemAudioSetList>();
