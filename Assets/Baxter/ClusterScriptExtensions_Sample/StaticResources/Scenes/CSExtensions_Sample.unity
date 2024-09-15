@@ -251,7 +251,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 100839271}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: -0.5, z: 0}
+  m_LocalPosition: {x: -1, y: -0.5, z: 0}
   m_LocalScale: {x: 30, y: 1, z: 30}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -684,7 +684,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1141947047}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -5}
+  m_LocalPosition: {x: -7, y: 0, z: -3}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1227,7 +1227,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1860875097}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: -5, z: 15}
+  m_LocalPosition: {x: -1, y: -5, z: 15}
   m_LocalScale: {x: 30, y: 30, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1698,7 +1698,7 @@ PrefabInstance:
     - target: {fileID: 521376571112084424, guid: a486f87b91c1dc04991183c14bbce7b1, type: 3}
       propertyPath: humanoidAnimations.Array.data[0].humanoidAnimation
       value: 
-      objectReference: {fileID: 11400000, guid: 25b4596dc88f48e459d6a27bcb307f93, type: 2}
+      objectReference: {fileID: 11400000, guid: 7170c420056e1864a980e8a1784921b0, type: 2}
     - target: {fileID: 521376571112084426, guid: a486f87b91c1dc04991183c14bbce7b1, type: 3}
       propertyPath: worldItemReferences.Array.data[0].id
       value: myOtherItem
