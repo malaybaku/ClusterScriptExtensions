@@ -90,38 +90,7 @@ $.onStart(() => {
 
 プロパティの `override` にチェックを入れてから値を編集すると、値を上書きした結果が `Scriptable Item` に適用されます。上記の例では `displayName` を実際に上書きしています。
 
-
-現時点では下記のような記法で、7種類のデータ型をサポートしています。
-
-```
-// @field(bool)
-const myBool = false;
-
-// @field(int)
-const myInt = 1;
-
-// @field(float)
-const myFloat = 1.23;
-
-// @field(string)
-const myString = "Test";
-
-// @field(Vector2)
-const myVector2 = new Vector2(1, 2);
-
-// @field(Vector3)
-const myVector3 = new Vector3(3, 4, 5);
-
-// @field(Quaternion)
-const myQuaternion = new Quaternion();
-```
-
-`Quaternion` 以外では、初期値を直接的な値として記載してあればインスペクター上でも初期値として反映されます。
-
-`const myInt = 1 + 2;` など、値のリテラルではない式で初期値を指定した場合、初期値は`0`や空文字(`""`)など、デフォルト値であるものとして扱われます。
-
-また、上記の `// @field` から始まるコメントは関数内に記述すると動作しません。
-例えば、 `$.onStart()` の内側で上記のコメントを記述しても無視されます。
+スクリプトの記法に関する詳細は [Script Example](./ScriptExamples.md) を参照してください。
 
 
 ### Template Codeのスクリプトを改変したときの操作
