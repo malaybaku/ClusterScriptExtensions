@@ -1,4 +1,5 @@
-// string, int, float のインスペクターで 複数行での表示や min/max つきスライダーを提示できるサンプル。
+// string, int, float のインスペクターで、
+// 複数行での表示や min/max つきスライダーを表示できるサンプル。
 
 // @field(string), @textArea
 const myLongText = ""
