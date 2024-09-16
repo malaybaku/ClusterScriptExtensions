@@ -16,7 +16,7 @@ namespace Baxter.ClusterScriptExtensions.Editor.ScriptUpdater
         /// 現在のソースコードとフィールド一覧の内容に基づいてスクリプトを再生成する。
         /// ワールドのアップロード前に呼び出すのが想定する使い方。
         /// </summary>
-        [MenuItem("CS Extensions/Apply Template Codes used in Scene")]
+        [MenuItem("CS Extensions/Apply Template Codes used in Scene", priority = 5)]
         public static void UpdateClusterScriptsInCurrentScene()
         {
             if (EditorSceneManager.loadedSceneCount is 0 or > 1)

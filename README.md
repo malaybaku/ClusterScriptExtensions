@@ -9,7 +9,11 @@ MonoBehaviour で記述したスクリプトに近い編集体験を目指して
 ## Features
 
 - MonoBehaviourの `[SerializeField]` のような、インスペクターで編集できるフィールドを Cluster Script に定義できます。
-- 現時点では簡単なデータ型 (`bool`や`string`など) にしか対応していませんが、拡張を計画しています。
+- 数値的なデータ型 (`bool`や`string`など) と、`HumanoidAnimation` などのアセットを参照するデータ型の双方に対応しています。
+
+このプロジェクトを使用したサンプルワールドは実際にclusterで確認できます。
+
+[CS Extensions Sample](https://cluster.mu/w/83e9050e-6af9-4aa6-9831-be8d060db505)
 
 
 ## CS Extensions の利用が適する場面
@@ -45,6 +49,22 @@ Unity Package Managerを使用する場合、 `Packages/manifest.json` で `depe
 ```
 "com.baxter.cs-extensions": "https://github.com/malaybaku/ClusterScriptExtensions.git?path=Assets/Baxter/ClusterScriptExtensions#v0.1.0",
 ```
+
+## Folder Structure
+
+- `Baxter/ClusterScriptExtensions`
+    - CS Extensionsの機能を実装したフォルダです。 
+    - `.unitypackage` と Unity Package Manager いずれでインストールした場合も、このフォルダがプロジェクトに導入されます。
+- `Baxter/ClusterScriptExtensions_Sample`
+    - CS Extensionsを使ったサンプルシーン、およびサンプルシーン用のアセットです。
+    - `.unitypackage` でインストールした場合のみ、このフォルダが同梱されています。
+- `Internal`
+    - 内部的なデバッグにのみ使うデータからなるフォルダです。
+    - レポジトリには含まれますが、Unity Package Manager と `.unitypackage` いずれの配布物にも含まれません。
+
+特に、`Baxter/ClusterScriptExtensions_Sample` 以下に含まれる `CSExtensions_Sample` シーンの内容は、冒頭で紹介した [CS Extensions Sample](https://cluster.mu/w/83e9050e-6af9-4aa6-9831-be8d060db505) ワールドと同様です。
+
+なお、`Baxter/ClusterScriptExtensions_Sample` 以下の `Sample03_AssetReferences.prefab` ではサウンドおよびモーションデータへの参照が設定されていません。これはアセットの再配布を防ぐための意図した挙動です。お手数ですが、利用可能なデータを準備のうえで参考にご使用下さい。
 
 
 ## How to Use
@@ -90,38 +110,7 @@ $.onStart(() => {
 
 プロパティの `override` にチェックを入れてから値を編集すると、値を上書きした結果が `Scriptable Item` に適用されます。上記の例では `displayName` を実際に上書きしています。
 
-
-現時点では下記のような記法で、7種類のデータ型をサポートしています。
-
-```
-// @field(bool)
-const myBool = false;
-
-// @field(int)
-const myInt = 1;
-
-// @field(float)
-const myFloat = 1.23;
-
-// @field(string)
-const myString = "Test";
-
-// @field(Vector2)
-const myVector2 = new Vector2(1, 2);
-
-// @field(Vector3)
-const myVector3 = new Vector3(3, 4, 5);
-
-// @field(Quaternion)
-const myQuaternion = new Quaternion();
-```
-
-`Quaternion` 以外では、初期値を直接的な値として記載してあればインスペクター上でも初期値として反映されます。
-
-`const myInt = 1 + 2;` など、値のリテラルではない式で初期値を指定した場合、初期値は`0`や空文字(`""`)など、デフォルト値であるものとして扱われます。
-
-また、上記の `// @field` から始まるコメントは関数内に記述すると動作しません。
-例えば、 `$.onStart()` の内側で上記のコメントを記述しても無視されます。
+より詳しいスクリプトの記法については、 [Script Examples](./ScriptExamples.md) ページを参照してください。
 
 
 ### Template Codeのスクリプトを改変したときの操作
