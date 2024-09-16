@@ -1698,7 +1698,7 @@ PrefabInstance:
     - target: {fileID: 521376571112084424, guid: a486f87b91c1dc04991183c14bbce7b1, type: 3}
       propertyPath: humanoidAnimations.Array.data[0].humanoidAnimation
       value: 
-      objectReference: {fileID: 11400000, guid: 7170c420056e1864a980e8a1784921b0, type: 2}
+      objectReference: {fileID: 11400000, guid: 15b2246f08bb3ec4ba2d7f4f17c68c8e, type: 2}
     - target: {fileID: 521376571112084426, guid: a486f87b91c1dc04991183c14bbce7b1, type: 3}
       propertyPath: worldItemReferences.Array.data[0].id
       value: myOtherItem
