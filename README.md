@@ -41,14 +41,7 @@ CS Extensions と連動するスクリプトを作成するには [Cluster Scrip
 
 使用中のプロジェクトに [Cluster Creator Kit](https://docs.cluster.mu/creatorkit/) の v2.20.0 またはそれ以降が導入されていることを確認します。
 
-その後、 [Releases](https://github.com/malaybaku/ClusterScriptExtensions/releases) に含まれる `.unitypackage` ファイルをダウンロードし、プロジェクトに導入します。
-
-Unity Package Managerを使用する場合、 `Packages/manifest.json` で `dependencies` に下記を追記する方法でも導入できます。
-末尾のバージョン値は [Releases](https://github.com/malaybaku/ClusterScriptExtensions/releases) で記載された、参照したい CS Extensions のリリースバージョンを指定します。
-
-```
-"com.baxter.cs-extensions": "https://github.com/malaybaku/ClusterScriptExtensions.git?path=Assets/Baxter/ClusterScriptExtensions#v0.1.0",
-```
+その後、 [Releases](https://github.com/malaybaku/ClusterScriptExtensions/releases) ページから `.unitypackage` ファイルをダウンロードするか、またはUnity Package Managerを設定することでインストールします。
 
 ## Folder Structure
 
