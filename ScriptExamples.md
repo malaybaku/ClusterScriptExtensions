@@ -1,10 +1,10 @@
-# CS Extensions Script Example
+# CS Extensions Script Examples
 
-このページでは CS Extensions で記述できるスクリプトの具体例を紹介します。
+このページでは、 CS Extensions で記述できるスクリプトの具体例を紹介します。
 
 CS Extensions を用いたスクリプトを書くためのコンポーネントのセットアップについては [README#How to Use](https://github.com/malaybaku/ClusterScriptExtensions#how-to-use)を参照してください。
 
-また、個別のAPIについては詳解しないため、適宜 [Script Reference](https://docs.cluster.mu/script/) を参照してください。
+また、個別のAPIについては詳解しないため、公式リファレンスである [Script Reference](https://docs.cluster.mu/script/) を参照してください。
 
 ## `// @field()` コメントによるインスペクターへの表示
 
@@ -31,7 +31,7 @@ $.onStart(() => {
 
 ## 基本的なデータ型
 
-文字列や数値など、スクリプトに完全な定数として記述できるデータ型としては `bool`, `int`, `float`, `string`, `Vector2`, `Vector3`, `Quaternion` の7種類を使用できます。
+文字列や数値など、定数として記述できるデータ型としては `bool`, `int`, `float`, `string`, `Vector2`, `Vector3`, `Quaternion` の7種類を使用できます。
 
 ```
 // @field(bool)
