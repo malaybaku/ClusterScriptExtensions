@@ -6,7 +6,7 @@ namespace Baxter.Internal.ClusterScriptExtensions.Editor
 {
     public static class DebugLogUtils
     {
-        private static void LogCommentAndTokenAndStatements(string code)
+        public static void LogCommentAndTokenAndStatements(string code)
         {
             var parser = new JavaScriptParser(new ParserOptions()
             {
@@ -56,7 +56,7 @@ namespace Baxter.Internal.ClusterScriptExtensions.Editor
             Debug.Log("Statement: End");
         }
 
-        private static void WriteDownNode(Node node, string indent = "")
+        public static void WriteDownNode(Node node, string indent = "")
         {
             Debug.Log($"{indent}node[{node.Type}]: {node}");
             foreach (var child in node.ChildNodes)
