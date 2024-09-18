@@ -1,10 +1,7 @@
 {
     "name": "Baxter.Internal.ClusterScriptExtension",
     "rootNamespace": "",
-    "references": [
-        "Baxter.ClusterScriptExtensions",
-        "Baxter.ClusterScriptExtensions.Editor"
-    ],
+    "references": [],
     "includePlatforms": [
         "Editor"
     ],

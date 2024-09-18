@@ -3,6 +3,7 @@ using System.Linq;
 using System.Text.RegularExpressions;
 using Esprima;
 using Esprima.Ast;
+using UnityEngine;
 
 namespace Baxter.ClusterScriptExtensions.Editor.ScriptParser
 {
@@ -61,6 +62,7 @@ namespace Baxter.ClusterScriptExtensions.Editor.ScriptParser
 
         private static readonly Dictionary<string, ExtensionFieldType> TypeNames = new()
         {
+            ["auto"] = ExtensionFieldType.Unknown,
             ["bool"] = ExtensionFieldType.Bool,
             ["int"] = ExtensionFieldType.Int,
             ["float"] = ExtensionFieldType.Float,
@@ -113,7 +115,7 @@ namespace Baxter.ClusterScriptExtensions.Editor.ScriptParser
                     continue;
                 }
 
-                // 下記ような順序の定義に対して // $field(int) を無視する
+                // 下記のような順序の定義に対して // $field(int) を無視する
                 // // @field(int)
                 // // @field(float)
                 // const x = 1.2;
@@ -132,10 +134,28 @@ namespace Baxter.ClusterScriptExtensions.Editor.ScriptParser
                     continue;
                 }
 
+                var fieldType = c.Type;
+                
+                // 式全体から型推定をすべき場合はそうする & それが失敗した場合は無効なフィールドとする
+                if (c.Type is ExtensionFieldType.Unknown && 
+                    decl.Init is { } initNode)
+                {
+                    var estimateSuccess = LiteralParser.TryEstimateExtensionFieldType(initNode, out var estimatedType);
+                    if (estimateSuccess)
+                    {
+                        fieldType = estimatedType;
+                    }
+                    else
+                    {
+                        Debug.LogWarning($"Failed to estimate field type: {fieldName}");
+                        continue;
+                    }
+                } 
+                
                 var field = new ScriptExtensionField()
                 {
                     FieldName = fieldName,
-                    Type = c.Type,
+                    Type = fieldType,
                     FieldDefinedLocation = new FieldDefinedLocation()
                     {
                         startLine = decl.Location.Start.Line,
