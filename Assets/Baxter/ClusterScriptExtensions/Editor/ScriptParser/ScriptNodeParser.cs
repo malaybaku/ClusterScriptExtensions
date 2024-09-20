@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace Baxter.ClusterScriptExtensions.Editor.ScriptParser
 {
-    public static class LiteralParser
+    public static class ScriptNodeParser
     {
         /// <summary>
         /// フィールドの初期化を行っている式の見た目からフィールドの型を推定する。

@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text.RegularExpressions;
+using Baxter.ClusterScriptExtensions.Editor.Localization;
 using Esprima;
 using Esprima.Ast;
 using UnityEngine;
@@ -140,14 +141,14 @@ namespace Baxter.ClusterScriptExtensions.Editor.ScriptParser
                 if (c.Type is ExtensionFieldType.Unknown && 
                     decl.Init is { } initNode)
                 {
-                    var estimateSuccess = LiteralParser.TryEstimateExtensionFieldType(initNode, out var estimatedType);
+                    var estimateSuccess = ScriptNodeParser.TryEstimateExtensionFieldType(initNode, out var estimatedType);
                     if (estimateSuccess)
                     {
                         fieldType = estimatedType;
                     }
                     else
                     {
-                        Debug.LogWarning($"Failed to estimate field type: {fieldName}");
+                        Debug.LogWarning(Texts.Get(Keys.ScriptExtensionField_Warning_FailedToEstimateType, fieldName));
                         continue;
                     }
                 } 
@@ -212,43 +213,43 @@ namespace Baxter.ClusterScriptExtensions.Editor.ScriptParser
             switch (target.Type)
             {
                 case ExtensionFieldType.Bool:
-                    if (LiteralParser.TryParseBool(expr, out var boolInitialValue))
+                    if (ScriptNodeParser.TryParseBool(expr, out var boolInitialValue))
                     {
                         target.BoolInitialValue = boolInitialValue;
                     }
                     break;
                 case ExtensionFieldType.Int:
-                    if (LiteralParser.TryParseInt(expr, out var intInitialValue))
+                    if (ScriptNodeParser.TryParseInt(expr, out var intInitialValue))
                     {
                         target.IntInitialValue = intInitialValue;
                     }
                     break;
                 case ExtensionFieldType.Float:
-                    if (LiteralParser.TryParseFloat(expr, out var floatInitialValue))
+                    if (ScriptNodeParser.TryParseFloat(expr, out var floatInitialValue))
                     {
                         target.FloatInitialValue = floatInitialValue;
                     }
                     break;
                 case ExtensionFieldType.String:
-                    if (LiteralParser.TryParseString(expr, out var stringInitialValue))
+                    if (ScriptNodeParser.TryParseString(expr, out var stringInitialValue))
                     {
                         target.StringInitialValue = stringInitialValue;
                     }
                     break;
                 case ExtensionFieldType.Vector2:
-                    if (LiteralParser.TryParseVector2(expr, out var vector2InitialValue))
+                    if (ScriptNodeParser.TryParseVector2(expr, out var vector2InitialValue))
                     {
                         target.Vector2InitialValue = vector2InitialValue;
                     }
                     break;
                 case ExtensionFieldType.Vector3:
-                    if (LiteralParser.TryParseVector3(expr, out var vector3InitialValue))
+                    if (ScriptNodeParser.TryParseVector3(expr, out var vector3InitialValue))
                     {
                         target.Vector3InitialValue = vector3InitialValue;
                     }
                     break;
                 case ExtensionFieldType.Quaternion:
-                    if (LiteralParser.TryParseQuaternion(expr, out var quaternionInitialValue))
+                    if (ScriptNodeParser.TryParseQuaternion(expr, out var quaternionInitialValue))
                     {
                         target.QuaternionInitialValue = quaternionInitialValue;
                     }
