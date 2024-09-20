@@ -1,4 +1,5 @@
 using System.Linq;
+using Baxter.ClusterScriptExtensions.Editor.Localization;
 using ClusterVR.CreatorKit.Item.Implements;
 using UnityEditor;
 using UnityEngine;
@@ -41,7 +42,7 @@ namespace Baxter.ClusterScriptExtensions.Editor.Inspector.ExtensionFieldDrawer
             if (valueProperty == null)
             {
                 // CanDrawで弾いてるから通常は来ないはず
-                EditorGUILayout.LabelField("(error: unsupported type!)");
+                EditorGUILayout.LabelField(Texts.Get(Keys.ScriptExtensionField_UnsupportedType));
                 return;
             }
             
@@ -86,7 +87,7 @@ namespace Baxter.ClusterScriptExtensions.Editor.Inspector.ExtensionFieldDrawer
         {
             if (valueProperty.objectReferenceValue is AnimationClip clip && !clip.isHumanMotion)
             {
-                ShowWarning("Error: The clip is not for Humanoid. Please set Humanoid animation.");
+                ShowWarning(Texts.Get(Keys.ScriptExtensionField_HumanoidAnimation_NotHumanoid));
             }
         }
 
@@ -102,7 +103,7 @@ namespace Baxter.ClusterScriptExtensions.Editor.Inspector.ExtensionFieldDrawer
             // - prefab modeの場合にprefab mode内オブジェクトを指してるのはセーフ
             if (EditorUtility.IsPersistent(item.gameObject))
             {
-                ShowWarning("Error: Please set item in scene.");
+                ShowWarning(Texts.Get(Keys.ScriptExtensionField_WorldItem_NotInScene));
             }
         }
 
@@ -118,7 +119,7 @@ namespace Baxter.ClusterScriptExtensions.Editor.Inspector.ExtensionFieldDrawer
             // - prefab modeの場合にprefab mode内オブジェクトを指すのもNG
             if (!EditorUtility.IsPersistent(item.gameObject))
             {
-                ShowWarning("Error: Please set item prefab, which is not in scene.");
+                ShowWarning(Texts.Get(Keys.ScriptExtensionField_WorldItemReferece_NotPrefab));
             }
         }
         
@@ -136,7 +137,7 @@ namespace Baxter.ClusterScriptExtensions.Editor.Inspector.ExtensionFieldDrawer
                 .SelectMany(renderer => renderer.sharedMaterials)
                 .Contains(material))
             {
-                ShowWarning("Error: Please set material used by item or its children");
+                ShowWarning(Texts.Get(Keys.ScriptExtensionField_Material_IrrelatedToItem));
             }
         }
     }

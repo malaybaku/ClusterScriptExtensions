@@ -1,5 +1,6 @@
 using System;
 using Baxter.ClusterScriptExtensions.Editor.ComponentUpdater;
+using Baxter.ClusterScriptExtensions.Editor.Localization;
 using ClusterVR.CreatorKit.Item.Implements;
 using UnityEditor;
 
@@ -73,7 +74,7 @@ namespace Baxter.ClusterScriptExtensions.Editor.ScriptUpdater
 
             if (startIndex < 0 || endIndex < 0)
             {
-                throw new InvalidOperationException("Location seems invalid");
+                throw new Exception(Texts.Get(Keys.ItemScriptUpdater_Location_Invalid));
             }
             
             return src.Substring(0, startIndex) + value + src.Substring(endIndex);
