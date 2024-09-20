@@ -1,5 +1,6 @@
 using System.Linq;
 using Baxter.ClusterScriptExtensions.Editor.Inspector.ExtensionFieldDrawer;
+using Baxter.ClusterScriptExtensions.Editor.Localization;
 using UnityEditor;
 using UnityEngine;
 
@@ -49,8 +50,8 @@ namespace Baxter.ClusterScriptExtensions.Editor.Inspector
                     return;
                 }
             }
-            
-            EditorGUILayout.LabelField("(error: unsupported type!)");
+
+            EditorGUILayout.LabelField(Texts.Get(Keys.ScriptExtensionField_UnsupportedType));
         }
 
         private static ExtensionFieldType GetFieldType(SerializedProperty property)

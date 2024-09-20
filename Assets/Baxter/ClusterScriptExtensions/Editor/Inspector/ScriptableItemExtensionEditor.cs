@@ -1,3 +1,4 @@
+using Baxter.ClusterScriptExtensions.Editor.Localization;
 using Baxter.ClusterScriptExtensions.Editor.ScriptUpdater;
 using UnityEditor;
 using UnityEngine;
@@ -37,13 +38,13 @@ namespace Baxter.ClusterScriptExtensions.Editor.Inspector
                 Apply(serializedObject);
             }
 
-            if (GUILayout.Button("Reload Script"))
+            if (GUILayout.Button(Texts.Get(Keys.ScriptableItemExtension_Inspector_ReloadScript)))
             {
                 ReloadFields(serializedObject, false);
                 Apply(serializedObject);
             }
 
-            if (GUILayout.Button("Reset Values"))
+            if (GUILayout.Button(Texts.Get(Keys.ScriptableItemExtension_Inspector_ResetValues)))
             {
                 // 値を巻き戻すのではなく、Field自体をリロードしてしまう。
                 // こっちのほうがスクリプトが変わったケースに対して強いため

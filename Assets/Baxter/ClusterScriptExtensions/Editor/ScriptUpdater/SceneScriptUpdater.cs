@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using System.Linq;
+using Baxter.ClusterScriptExtensions.Editor.Localization;
 using ClusterVR.CreatorKit.Gimmick.Implements;
 using ClusterVR.CreatorKit.Item.Implements;
 using UnityEditor;
@@ -21,7 +22,7 @@ namespace Baxter.ClusterScriptExtensions.Editor.ScriptUpdater
         {
             if (EditorSceneManager.loadedSceneCount is 0 or > 1)
             {
-                Debug.LogError("Could not specify target scene. Please open only 1 scene.");
+                Debug.LogError(Texts.Get(Keys.SceneScriptUpdater_SceneCountInvalid));
                 return;
             }
 
@@ -46,7 +47,7 @@ namespace Baxter.ClusterScriptExtensions.Editor.ScriptUpdater
         /// <param name="scene"></param>
         private static void UpdateClusterScripts(Scene scene)
         {
-            Debug.Log("Updating Scriptable Item Extensions...");
+            Debug.Log(Texts.Get(Keys.SceneScriptUpdater_Log_UpdateStart));
 
             var extensionsInScene = GetAllComponentsInScene<ScriptableItemExtension>(scene);
             
@@ -99,10 +100,10 @@ namespace Baxter.ClusterScriptExtensions.Editor.ScriptUpdater
             
             AssetDatabase.SaveAssets();
 
-            Debug.Log(
-                "Scriptable Item Extension Updated: " +
-                $"{updatedSceneObjectCount} scene objects, and {updatedPrefabCount} prefab objects"
-                );
+            Debug.Log(Texts.Get(Keys.SceneScriptUpdater_Log_UpdateCompleted,
+                updatedSceneObjectCount,
+                updatedPrefabCount
+            ));
         }
 
         private static IEnumerable<T> GetAllComponentsInScene<T>(Scene scene)

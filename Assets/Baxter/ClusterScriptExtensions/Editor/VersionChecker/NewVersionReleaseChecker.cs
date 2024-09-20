@@ -1,6 +1,7 @@
 using System;
 using System.Linq;
 using System.Threading.Tasks;
+using Baxter.ClusterScriptExtensions.Editor.Localization;
 using UnityEditor;
 using UnityEditor.PackageManager;
 using UnityEngine;
@@ -20,6 +21,9 @@ namespace Baxter.ClusterScriptExtensions.Editor.VersionChecker
         private const int ApiTimeoutSecond = 3;
 
         private const string ReleasePageUrl = "https://github.com/malaybaku/ClusterScriptExtensions/releases";
+
+        private const string UnityPackagePackageJsonAssetPath
+            = "Assets/Baxter/ClusterScriptExtensions/package.json";
         
         [MenuItem("CS Extensions/Check Update...", priority = 15)]
         public static void CheckUpdate()
@@ -50,21 +54,22 @@ namespace Baxter.ClusterScriptExtensions.Editor.VersionChecker
             if (currentVersion.CompareTo(latestVersion) >= 0)
             {
                 openPage = EditorUtility.DisplayDialog(
-                    $"CS Extensions: Current version is latest",
-                    $"Current version is the latest: {currentVersion}",
-                    "Check Release Page",
-                    "Close"
+                    Texts.Get(Keys.VersionChecker_IsNewest_Title),
+                    Texts.Get(Keys.VersionChecker_IsNewest_CurrentVersion, currentVersion),
+                    Texts.Get(Keys.VersionChecker_IsNewest_CheckReleasePage),
+                    Texts.Get(Keys.VersionChecker_Dialog_Close)
                 );
             }
             else
             {
                 openPage = EditorUtility.DisplayDialog(
-                    $"CS Extensions: New Version Detected",
-                    $"Current Version: {currentVersion}\n" +
-                    $"Latest Version:{latestVersion}\n\n" + 
-                    "Latest Version Release Note:\n\n" + desc,
-                    "Open Release Page",
-                    "Close"
+                    Texts.Get(Keys.VersionChecker_NewVersionFound_Title),
+                    Texts.Get(Keys.VersionChecker_NewVersionFound_CurrentVersion, currentVersion) + "\n" + 
+                        Texts.Get(Keys.VersionChecker_NewVersionFound_LatestVersion, latestVersion) + "\n" + 
+                        Texts.Get(Keys.VersionChecker_NewVersionFound_ReleaseNoteHeader) + "\n\n" + 
+                        desc,
+                    Texts.Get(Keys.VersionChecker_IsNewest_CheckReleasePage),
+                    Texts.Get(Keys.VersionChecker_Dialog_Close)
                 );
             }
 
@@ -86,22 +91,22 @@ namespace Baxter.ClusterScriptExtensions.Editor.VersionChecker
                 return version;
             }
 
-            throw new Exception("Failed to get current installed version");
+            throw new Exception(Texts.Get(Keys.VersionChecker_Failed_GetCurrentVersion));
         }
         
         private static bool TryGetInstalledVersionFromUpm(out VersionNumber result)
         {
             var request = Client.List(true, true);
-            Debug.Log("Check Unity Package Manager list...");
+            Debug.Log(Texts.Get(Keys.VersionChecker_UPM_List_Check));
             while (!request.IsCompleted)
             {
                 //waiting...
             }
-            Debug.Log("Check Unity Package Manager list completed.");
-
+            Debug.Log(Texts.Get(Keys.VersionChecker_UPM_List_Check_Complete));
+            
             if (request.Status != StatusCode.Success)
             {
-                throw new Exception("Failed to check current packages in project");
+                throw new Exception(Texts.Get(Keys.VersionChecker_UPM_Check_Failed_Unknown));
             }
             
             var package = request.Result.FirstOrDefault(pkg => pkg.name == PackageName);
@@ -115,16 +120,16 @@ namespace Baxter.ClusterScriptExtensions.Editor.VersionChecker
             if (!VersionNumber.TryParse(package.version, out result))
             {
                 // 見つかったパッケージのバージョンがパースできないのは変なので例外に帰着
-                throw new Exception("Failed to parse current package version");
+                throw new Exception(Texts.Get(Keys.VersionChecker_UPM_Check_Failed_Parse));
             }
 
-            Debug.Log($"UPM based CS Extensions version confirmed: {result}");
+            Debug.Log(Texts.Get(Keys.VersionChecker_UPM_Check_Completed, result));
             return true;
         }
 
         private static bool TryGetInstalledVersionFromUnityPackage(out VersionNumber result)
         {
-            var rawJson = AssetDatabase.LoadAssetAtPath<TextAsset>("Assets/Baxter/ClusterScriptExtensions/package.json");
+            var rawJson = AssetDatabase.LoadAssetAtPath<TextAsset>(UnityPackagePackageJsonAssetPath);
             if (rawJson == null)
             {
                 // UPMでインストールしていると解釈できるので、正常に失敗扱いする
@@ -136,16 +141,16 @@ namespace Baxter.ClusterScriptExtensions.Editor.VersionChecker
             if (!VersionNumber.TryParse(versionData.Version, out result))
             {
                 // package.jsonがあるけどパースできないケースは例外に帰着する
-                throw new Exception("Failed to parse current version from package");
+                throw new Exception(Texts.Get(Keys.VersionChecker_UnityPackage_Failed_Parse));
             }
 
-            Debug.Log($".unitypackage file based CS Extensions version confirmed: {result}");
+            Debug.Log(Texts.Get(Keys.VersionChecker_UnityPackage_Completed, result));
             return true;
         }
         
         private static async Task<(VersionNumber, string)> GetLatestReleaseInfoAsync()
         {
-            Debug.Log("Check latest version of CS Extensions...");
+            Debug.Log(Texts.Get(Keys.VersionChecker_GetLatestVersion_Started));
             var request = UnityWebRequest.Get(LatestReleaseApiEndPoint);
             request.timeout = ApiTimeoutSecond;
             var operation = request.SendWebRequest();
@@ -157,7 +162,7 @@ namespace Baxter.ClusterScriptExtensions.Editor.VersionChecker
 
             if (request.result is UnityWebRequest.Result.ConnectionError or UnityWebRequest.Result.ProtocolError)
             {
-                throw new Exception("Failed to get latest release info from GitHub");
+                throw new Exception(Texts.Get(Keys.VersionChecker_GetLatestVersion_Failed_Get));
             }
 
             var rawInfo = request.downloadHandler.text;
@@ -165,10 +170,10 @@ namespace Baxter.ClusterScriptExtensions.Editor.VersionChecker
 
             if (!VersionNumber.TryParse(releaseInfo.Name, out var version))
             {
-                throw new Exception("Failed to parse version number");
+                throw new Exception(Texts.Get(Keys.VersionChecker_GetLatestVersion_Failed_Parse));
             }
 
-            Debug.Log($"Latest version confirmed: {version}");
+            Debug.Log(Texts.Get(Keys.VersionChecker_GetLatestVersion_Completed, version));
             return (version, releaseInfo.Body);
         }
     }
